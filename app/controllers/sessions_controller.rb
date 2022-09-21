@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
       if(admin)
           session[:admin_id] = admin.id
-          redirect_to root_path
+          redirect_to employees_path
       else 
         flash[:notice] = "You email or password is wrong."
            redirect_to new_sessions_path 

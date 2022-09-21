@@ -1,0 +1,19 @@
+<h1><%= @employee.name %></h1>
+
+<h1><%= @employee.gender %></h1>
+
+<h1><%= @employee.age %></h1>
+
+<h1><%= @employee.address %></h1>
+
+<h1><%= @employee.email %></h>
+
+  <h1><%= @employee.password %></h>
+
+<ul>
+  <li><%= link_to "Edit", edit_employee_path(@employee) %></li>
+ 
+    <li><%= link_to "Destroy", destroy_path(@employee),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
+</ul>

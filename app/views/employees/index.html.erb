@@ -1,1 +1,11 @@
 <p>this is  my employee index</p>
+
+<ul>
+  <% @employees.each do |employee| %>
+    <li>
+      <a href="/employees/<%= employee.id %>">
+        <%= employee.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
