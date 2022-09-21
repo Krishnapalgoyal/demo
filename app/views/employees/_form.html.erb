@@ -1,0 +1,22 @@
+<%= form_with model: @employee do |form| %>
+  
+    <%= form.label :name %>
+    <%= form.text_field :name %><br>
+       <%= form.label :gender %>
+    <%= form.text_field :gender %><br>
+ 
+    <%= form.label :age %>
+    <%= form.number_field :age %><br>
+
+    <%= form.label :address %>
+     <%= form.text_field :address %><br>
+ 
+    <%= form.label :email%>
+    <%= form.email_field :email %><br>
+
+    <%= form.label :password %>
+    <%= form.password_field :password %><br>
+
+ 
+    <%= form.submit %>
+<%end%>
