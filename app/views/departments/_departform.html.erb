@@ -1,0 +1,10 @@
+<%= form_with model: @department do |form| %>
+  
+    <%= form.label :name %>
+    <%= form.text_field :name %><br>
+       <%= form.label :jobroll %>
+    <%= form.text_area :jobroll %><br>
+ 
+   
+    <%= form.submit %>
+<%end%>

@@ -1,0 +1,9 @@
+
+<h1><%= @department.name %></h>
+
+  <h1><%= @department.jobroll %></h>
+
+<ul>
+  <li><%= link_to "Edit", edit_department_path(@department) %></li>
+ 
+     <li><%=link_to 'delete', department_path(@department), method: :delete %></li>

@@ -10,10 +10,8 @@
 
   <h1><%= @employee.password %></h>
 
+
 <ul>
   <li><%= link_to "Edit", edit_employee_path(@employee) %></li>
  
-    <li><%= link_to "Destroy", destroy_path(@employee),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %></li>
-</ul>
+     <li><%=link_to 'delete', destroy_path(@employee), method: :delete %></li>

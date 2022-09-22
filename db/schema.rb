@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_20_130504) do
+ActiveRecord::Schema.define(version: 2022_09_21_114149) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
     t.decimal "contact"
     t.text "email"
     t.text "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.text "jobroll"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -28,8 +35,10 @@ ActiveRecord::Schema.define(version: 2022_09_20_130504) do
     t.text "address"
     t.text "email"
     t.text "password"
+    t.integer "department_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
 end

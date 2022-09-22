@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
  resources :admins
  resource :sessions
-delete '/destroy' => 'employees#destroy'
-  get '/destroy' => 'employees#destroy'
+
+  delete '/destroy/' => 'employees#destroy'
+  get '/destroy/' => 'employees#destroy'
  resources :employees
+  resources :departments
 
 end

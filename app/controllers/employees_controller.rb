@@ -36,6 +36,7 @@ class EmployeesController < ApplicationController
   end
 
   def destroy
+   
     @employee = Employee.find(params[:id])
     @employee.destroy
 
@@ -47,7 +48,7 @@ class EmployeesController < ApplicationController
 
   private
     def employee_params
-      params.require(:employee).permit(:name, :gender ,:age, :address ,:email ,:password )
+      params.require(:employee).permit(:name, :gender ,:age, :address ,:email ,:password ,:department_id)
     end
 end
 
