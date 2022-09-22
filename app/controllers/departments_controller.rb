@@ -13,12 +13,15 @@ class DepartmentsController < ApplicationController
   end
 
   def create
+  
     @department = Department.new(department_params)
 
     if @department.save
       redirect_to departments_path
-    
+    else
+      render :new
     end
+
   end
 
   def edit

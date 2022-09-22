@@ -8,8 +8,10 @@ Rails.application.routes.draw do
  resources :admins
  resource :sessions
 
-  delete '/destroy/' => 'employees#destroy'
-  get '/destroy/' => 'employees#destroy'
+  # delete '/destroy' => 'employees#destroy'
+  # get '/destroy' => 'employees#destroy'
+
+   # get '/show/' => 'admins#show'
  resources :employees
   resources :departments
 

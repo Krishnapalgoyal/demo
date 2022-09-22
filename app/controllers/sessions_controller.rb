@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
       def show
       @admin = Admin.find(params[:id])
-  end
+      end
 
     def create
       admin = Admin.find_by(email: params[:email] , password: params[:password])

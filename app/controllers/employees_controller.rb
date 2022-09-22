@@ -17,8 +17,9 @@ class EmployeesController < ApplicationController
     
     if @employee.save
       redirect_to employees_path
-    
-    end
+ 
+   end
+
   end
 
   def edit
@@ -36,11 +37,11 @@ class EmployeesController < ApplicationController
   end
 
   def destroy
-   
+
     @employee = Employee.find(params[:id])
     @employee.destroy
 
-    redirect_to root_path
+    redirect_to employees_path
   end
 
 

@@ -1,12 +1,2 @@
 <h1>Sign up</h1>
-<%= form_for @admin do |f|%>
-<%= f.label :name%>
-<%= f.text_field :name%>
-<%= f.label :contact%>
-<%= f.text_field :contact%>
-<%= f.label :email%>
-<%= f.text_field :email%>
-<%= f.label :password%>
-<%= f.text_field :password%>
-<%= f.submit%>
-<% end %>
+<%= render "adminforn", admin: @admin %>
