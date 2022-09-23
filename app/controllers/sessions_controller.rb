@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
 
-     def new
+    def new
        @user = Admin.new
     end
 
@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
 
     def create
       admin = Admin.find_by(email: params[:email] , password: params[:password])
-
       if(admin)
           session[:admin_id] = admin.id
           redirect_to employees_path
@@ -23,9 +22,9 @@ class SessionsController < ApplicationController
 
 
     def destroy
-          session.delete(:admin_id)
-    flash[:notice] = "You have successfully logged out."
-    redirect_to root_path
+      session.delete(:admin_id)
+      flash[:notice] = "You have successfully logged out."
+      redirect_to root_path
     end
 
     private

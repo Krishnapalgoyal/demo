@@ -4,7 +4,6 @@ class CreateEmployees < ActiveRecord::Migration[6.0]
       t.string :name
       t.text :gender
       t.numeric :age
-      t.text :address
       t.text :email
       t.text :password
       t.references :department

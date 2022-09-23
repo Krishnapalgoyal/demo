@@ -8,8 +8,22 @@
     <%= form.label :age %>
     <%= form.number_field :age %><br>
 
-    <%= form.label :address %>
-     <%= form.text_field :address %><br>
+
+  Addresses:
+  <ul>
+    <%= form.fields_for  :addresses  do |addresses_form| %>
+      <li>
+        <%= addresses_form.label :c_address %>
+        <%= addresses_form.text_field :c_address %>
+
+        <%= addresses_form.label  :p_address %>
+        <%= addresses_form.text_field :p_address %>
+        ...
+      </li>
+    <% end %>
+  </ul>
+
+
  
     <%= form.label :email%>
     <%= form.email_field :email %><br>

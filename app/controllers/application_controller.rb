@@ -21,16 +21,16 @@ class ApplicationController < ActionController::Base
         @current_user ||= Admin.find(session[:admin_id]) if 
 
         session[:admin_id]
-      end
+    end
 
 
-      def current_employee
+    def current_employee
         @current_employee ||= Employee.find(session[:employee_id]) if 
 
         session[:employee_id]
-      end
+    end
 
-        def employeeloged_in?
+    def employeeloged_in?
         session[:employee_id] 
     end    
 

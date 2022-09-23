@@ -1,6 +1,6 @@
 class EmployeesessionsController < ApplicationController
 
-     def new
+    def new
        @employee = Employee.new
     end
     def index

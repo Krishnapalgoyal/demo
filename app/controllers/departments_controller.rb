@@ -1,58 +1,44 @@
 class DepartmentsController < ApplicationController
-       before_action :require_login
+       before_action :require_login 
 
-   def new 
+  def new
     @department = Department.new
   end
-  def index
+   def index
     @departments = Department.all
   end
-
-  def show
-    @department = Department.find(params[:id])
-  end
-
+    
   def create
-  
-    @department = Department.new(department_params)
+    @department = Department.new(d_params)
 
-    if @department.save
-      redirect_to departments_path
+    if @deparment.save
+      redirect_to @department
     else
       render :new
     end
-
   end
 
   def edit
-    @department = Department.find(params[:id])
+      @department = Department.find(params[:id])
   end
 
   def update
     @department = Department.find(params[:id])
 
-    if @department.update(department_params)
+    if @department.update(d_params)
       redirect_to @department
     else
       render :edit
     end
   end
 
-  def destroy
-   
-    @department = Department.find(params[:id])
-    @department.destroy
-
-    redirect_to root_path
+  def show
+     @department = Department.find(params[:id])
   end
-
-
-
+   
 
   private
-    def department_params
-      params.require(:department).permit(:name, :jobroll  )
-    end
+  def d_params
+        params.require(:department).permit(:name, :jobroll)
+  end
 end
-
-

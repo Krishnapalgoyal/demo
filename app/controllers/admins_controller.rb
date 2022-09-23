@@ -1,15 +1,12 @@
 class AdminsController < ApplicationController
-   
- 
-
   before_action :require_login
-def new
+  def new
     @admin = Admin.new
   end
    def index
     @admin = Admin.all
   end
-  
+    
   def create
     @admin = Admin.new(admin_params)
 
@@ -20,8 +17,8 @@ def new
     end
   end
 
-def edit
-    @admin = Admin.find(params[:id])
+  def edit
+      @admin = Admin.find(params[:id])
   end
 
   def update
@@ -34,13 +31,13 @@ def edit
     end
   end
 
- def show
-   @admin = Admin.find(params[:id])
+  def show
+     @admin = Admin.find(params[:id])
   end
- 
+   
 
   private
-    def admin_params
-      params.require(:admin).permit(:name, :contact ,:email, :password)
-    end
+  def admin_params
+        params.require(:admin).permit(:name, :contact ,:email, :password)
+  end
 end

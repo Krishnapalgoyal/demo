@@ -4,7 +4,7 @@
 
 <h1><%= @employee.age %></h1>
 
-<h1><%= @employee.address %></h1>
+
 
 <h1><%= @employee.email %></h>
 
@@ -13,7 +13,6 @@
 
 <ul>
   <li><%= link_to "Edit", edit_employee_path(@employee) %></li>
- 
-     <li><%=link_to 'delete', employee_path(employee_id = @employee.id), method: :delete %></li>
+  <li><%=link_to 'delete', employee_path(employee_id = @employee.id), method: :delete %></li>
 
 </ul>
