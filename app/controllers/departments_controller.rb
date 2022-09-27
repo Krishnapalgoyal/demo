@@ -1,18 +1,20 @@
 class DepartmentsController < ApplicationController
-       before_action :require_login 
+ before_action :require_login
+ before_action :current_type
 
   def new
     @department = Department.new
   end
-   def index
+  
+  def index
     @departments = Department.all
   end
     
   def create
+     
     @department = Department.new(d_params)
-
-    if @deparment.save
-      redirect_to @department
+  if @department.save
+      redirect_to departments_path
     else
       render :new
     end
@@ -36,9 +38,21 @@ class DepartmentsController < ApplicationController
      @department = Department.find(params[:id])
   end
    
+  def destroy
+    # if current_user
+    #   redirect_to root_path 
+    #   flash[:notice] = "you dont delete your self plese log out "
+    # else 
+    @department = Department.find(params[:id])
+    @department.destroy
+    redirect_to departments_path
+  # end
+  end
 
   private
+
   def d_params
         params.require(:department).permit(:name, :jobroll)
   end
 end
+

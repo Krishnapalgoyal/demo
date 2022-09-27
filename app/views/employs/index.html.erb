@@ -1,0 +1,11 @@
+  <p>this is  my employee index</p>
+
+<% if current_type %>
+  <ul>
+    <% @employs.each do |employ| %>
+      <li>
+         <%= link_to employ.name, employ_path(@employs.ids) %>
+      </li>
+    <% end %>
+  </ul>
+<%end%>

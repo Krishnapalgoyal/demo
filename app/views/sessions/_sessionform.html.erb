@@ -1,6 +1,10 @@
 <%=form_tag (sessions_path) do %>
-<%=text_field_tag :email %>
-<%=text_field_tag :password %>
+email
+<%=text_field_tag :email %></br>
+roll
+<%=text_field_tag :type %><br>
+password
+<%=password_field_tag :password %></br>
 <%=submit_tag "Login"%>
 <% end %>
 

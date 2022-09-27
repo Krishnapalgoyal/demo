@@ -1,1 +1,12 @@
-<p><% this is my department index pag %></p>
+
+  <p> this is my department page... </p>
+
+      <p><%= link_to "Add new Department", new_department_path %></p>
+    <ul>
+      <% @departments.each do |department| %>
+        <li>
+           <%= link_to department.name, department_path(@departments.ids) %>
+        </li>
+      <% end %>
+    </ul>
+

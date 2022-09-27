@@ -1,25 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'home/index'
-  devise_for :views
 
- 
+
+  # root "home#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
- root "admins#index"
+ root "home#index"
 
 
   delete '/logout' => 'sessions#destroy'
-  get '/logout' => 'sessions#destroy'
- resources :admins
- resource :sessions
+   get '/logout' => 'sessions#destroy'
+ 
+   resources :sessions
+   resources :employs
+   resources :departments
 
-  # delete '/destroy' => 'employees#destroy'
-  # get '/destroy' => 'employees#destroy'
-
-   # get '/show/' => 'admins#show'
- resources :employees
-  resources :departments
-
-   resource :employeesessions
+   
 
 end

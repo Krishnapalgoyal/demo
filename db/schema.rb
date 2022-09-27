@@ -10,24 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_23_101030) do
+ActiveRecord::Schema.define(version: 2022_09_26_064308) do
 
   create_table "addresses", force: :cascade do |t|
     t.text "c_address"
     t.text "p_address"
-    t.integer "employee_id"
+    t.integer "employ_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["employee_id"], name: "index_addresses_on_employee_id"
-  end
-
-  create_table "admins", force: :cascade do |t|
-    t.string "name"
-    t.decimal "contact"
-    t.text "email"
-    t.text "password"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employ_id"], name: "index_addresses_on_employ_id"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -37,16 +28,16 @@ ActiveRecord::Schema.define(version: 2022_09_23_101030) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "employees", force: :cascade do |t|
+  create_table "employs", force: :cascade do |t|
     t.string "name"
-    t.text "gender"
-    t.decimal "age"
+    t.decimal "contact"
     t.text "email"
+    t.string "type"
     t.text "password"
     t.integer "department_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["department_id"], name: "index_employees_on_department_id"
+    t.index ["department_id"], name: "index_employs_on_department_id"
   end
 
   create_table "users", force: :cascade do |t|

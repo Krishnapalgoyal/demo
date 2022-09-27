@@ -1,9 +1,0 @@
-<%=form_tag (employeesessions_path) do %>
-<%=text_field_tag :email %>
-<%=text_field_tag :password %>
-<%=submit_tag "Login"%>
-<% end %>
-
- <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>

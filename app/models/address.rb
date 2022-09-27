@@ -1,3 +1,5 @@
 class Address < ApplicationRecord
-  belongs_to :employee
+  belongs_to :employ
+  # validates :c_address,:p_address, presence: true
+
 end

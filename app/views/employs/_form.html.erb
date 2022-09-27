@@ -1,0 +1,51 @@
+<%= form_with model: @employ do |form| %>
+
+  <%= form.label :name %>
+    <%= form.text_field :name %><br>
+      <% @employ.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+
+    <%= form.label :contact %>
+    <%= form.number_field :contact%><br>
+      <% @employ.errors.full_messages_for(:contact).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  Addresses:
+  <ul>
+
+    <%= form.fields_for  :addresses , Address.new do |addresses_form| %>
+      <li>
+        <%= addresses_form.label :c_address %>
+        <%= addresses_form.text_field :c_address %>
+
+        <%= addresses_form.label  :p_address %>
+        <%= addresses_form.text_field :p_address %>
+        ...
+      </li>
+    <% end %>
+  </ul>
+
+
+ 
+    <%= form.label :email%>
+    <%= form.email_field :email %><br>
+      <% @employ.errors.full_messages_for(:email).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+
+    <%= form.label :type %>
+    <%= form.text_field :type %><br>
+
+    <%= form.label :password%>
+    <%= form.password_field :password %><br>
+      <% @employ.errors.full_messages_for(:password).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+
+    <%= form.label :department %>
+   <%= form.collection_select :department_id, Department.order(:name), :id, :name %></br>
+
+ 
+    <%= form.submit %>
+<%end%>
