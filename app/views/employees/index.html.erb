@@ -2,9 +2,9 @@
 
 <% if current_type %>
   <ul>
-    <% @employs.each do |employ| %>
+    <% @employee.each do |employee| %>
       <li>
-         <%= link_to employ.name, employ_path(@employs.ids) %>
+         <%= link_to employee.name, employee_path(employee.id) %>
       </li>
     <% end %>
   </ul>

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
         helper_method :require_login
         helper_method :current_user
         helper_method :current_employee
-        helper_method :employeeloged_in?
+        
       
 
 
@@ -19,13 +19,13 @@ class ApplicationController < ActionController::Base
     end
 
     def current_user
-        @current_user ||= Employ.find(session[:employ_id]) if 
+        @current_user ||= Employee.find(session[:employee_id]) if 
 
-        session[:employ_id]
+        session[:employee_id]
     end 
 
     def current_type
-      current_user.type == "Employer"
+      current_user.type == "Admin"
     end
      
 

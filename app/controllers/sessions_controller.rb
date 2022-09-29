@@ -1,33 +1,33 @@
 class SessionsController < ApplicationController
     def index
-    @employ = Employ.all
+    @employees = Employee.all
     end
     def new
-       @employ = Employ.new
+       @employee = Employee.new
     end
 
     def show
-      @employ = Employ.find(params[:id])
+      @employee = Employee.find(params[:id])
     end
 
     def create
 
-      employ = Employ.find_by(email: params[:email],type: params[:type] ,password: params[:password])
+      employee = Employee.find_by(email: params[:email],type: params[:type] ,password: params[:password])
        
-      if (params[:type] == "Employer")
-        if(employ)
-          session[:employ_id] = employ.id
-          redirect_to employs_path
-          flash[:notice] = "You are a employer."
+      if (params[:type] == "Admin")
+        if(employee)
+          session[:employee_id] = employee.id
+          redirect_to employees_path
+          flash[:notice] = "You are a Admin."
            
         else 
           flash[:notice] = "You email or password is wrong."
           redirect_to new_session_path 
         end     
       elsif (params[:type] == "Employe")
-          if(employ)
-          session[:employ_id] = employ.id
-          redirect_to employs_path
+          if(employee)
+          session[:employee_id] = employee.id
+          redirect_to employees_path
           flash[:notice] = "You are a employe."
            
           else 
@@ -39,13 +39,13 @@ class SessionsController < ApplicationController
 
 
     def destroy
-      session.delete(:employ_id)
+      session.delete(:employee_id)
       flash[:notice] = "You have successfully logged out."
       redirect_to root_path
     end
 
     private
-    def employ_params
-      params.require(:employ).permit(:name, :contact ,:email, :type)
+    def employee_params
+      params.require(:employee).permit(:name, :contact ,:email, :type)
     end
 end

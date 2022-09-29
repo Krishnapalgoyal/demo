@@ -49,6 +49,13 @@ class DepartmentsController < ApplicationController
   # end
   end
 
+  def all_employee
+    @department = Department.find(params[:id])
+    @department.employees
+  end 
+
+
+
   private
 
   def d_params

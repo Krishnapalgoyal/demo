@@ -3,7 +3,7 @@ class CreateAddresses < ActiveRecord::Migration[6.0]
     create_table :addresses do |t|
       t.text   :c_address
       t.text   :p_address
-      t.references :employ
+      t.references :employee
       t.timestamps
     end
   end

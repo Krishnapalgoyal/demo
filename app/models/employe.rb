@@ -1,2 +1,2 @@
-class Employe < Employ
+class Employe < Employee
 end

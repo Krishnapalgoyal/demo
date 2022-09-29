@@ -1,12 +1,62 @@
-
-  <p> this is my department page... </p>
-
-      <p><%= link_to "Add new Department", new_department_path %></p>
-    <ul>
+    <div class= container>
+  
+      <div class="text-right">
+      <%= link_to "Add new Department", new_department_path,class:"btn btn-primary"%>
+      </div >
+    <div class="table-responsive">
+    <table class="table">
+      <tr>
+      <th>All Department</th>
+     </tr>
       <% @departments.each do |department| %>
-        <li>
-           <%= link_to department.name, department_path(@departments.ids) %>
-        </li>
-      <% end %>
-    </ul>
+       <tr>
+      <td>
+         <%= link_to department.name, department_path(department.id) %>
+      </td>
+       <td>
+         <%=   department.employees.count() %>
+      </td>
+       <td>
+         <%= link_to "All Employees", all_employee_department_path(department.id),class:"btn btn-primary"%>
+       </td>
+       </tr>
+    <% end %>
 
+
+
+
+
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add department </button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <%= form_with url: departments_path do |form| %>
+  <div class="card">
+  <div class="card-body">
+
+          <div class="mb-3">
+          <%= form.label :name, { class: "form-label"} %><br>
+          <%= form.text_field :name, { class: "form-control"} %>
+        </div>
+
+          <div class="mb-3">
+          <%= form.label :jobroll, { class: "form-label"}  %><br>
+          <%= form.text_area :jobroll, { class: "form-control"}%>
+        </div>
+           <%= form.submit "Submit",method: :POST, class: "btn btn-primary" %>
+
+          </div>
+        </div>
+      <% end %>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
