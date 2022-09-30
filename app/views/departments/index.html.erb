@@ -1,62 +1,59 @@
-    <div class= container>
-  
-      <div class="text-right">
-      <%= link_to "Add new Department", new_department_path,class:"btn btn-primary"%>
-      </div >
+
+<div class= container>
+   <%= link_to "Add new Department", new_department_path,class:"btn btn-primary",data:{toggle:"modal",target:"#myModal"}%>
     <div class="table-responsive">
-    <table class="table">
+    <table class="table",id="userTables">
+     
       <tr>
-      <th>All Department</th>
+        <th> Departments</th>
+        <th>count</th>
+        <th>Action</th>
      </tr>
-      <% @departments.each do |department| %>
-       <tr>
-      <td>
-         <%= link_to department.name, department_path(department.id) %>
-      </td>
-       <td>
-         <%=   department.employees.count() %>
-      </td>
-       <td>
-         <%= link_to "All Employees", all_employee_department_path(department.id),class:"btn btn-primary"%>
-       </td>
-       </tr>
+        <% @departments.each do |department| %>
+
+     <%= render "newuser",department: department%>
     <% end %>
-
-
-
-
-
-
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add department </button>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+    </table>
+</div>
+<div class="modal" id="myModal">
   <div class="modal-dialog">
-
-    <!-- Modal content-->
     <div class="modal-content">
-      <%= form_with url: departments_path do |form| %>
-  <div class="card">
-  <div class="card-body">
 
-          <div class="mb-3">
-          <%= form.label :name, { class: "form-label"} %><br>
-          <%= form.text_field :name, { class: "form-control"} %>
-        </div>
-
-          <div class="mb-3">
-          <%= form.label :jobroll, { class: "form-label"}  %><br>
-          <%= form.text_area :jobroll, { class: "form-control"}%>
-        </div>
-           <%= form.submit "Submit",method: :POST, class: "btn btn-primary" %>
-
-          </div>
-        </div>
-      <% end %>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-    </div>
 
+      <!-- Modal body -->
+      <div class="modal-body">
+       
+          <%= form_with model: @department, remote: true do |form| %>
+          <div class="card">
+          <div class="card-body">
+
+            <div class="mb-3">
+            <%= form.label :name, { class: "form-label"} %><br>
+            <%= form.text_field :name, { class: "form-control"} %>
+           </div>
+
+            <div class="mb-3">
+            <%= form.label :jobroll, { class: "form-label"}  %><br>
+            <%= form.text_area :jobroll, { class: "form-control"}%>
+            </div>
+             <%= form.submit "Submit", class: "btn btn-primary" %>
+             </div>
+          </div>
+          <% end %>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
   </div>
+</div>
 </div>

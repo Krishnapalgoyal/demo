@@ -13,7 +13,9 @@
    <p class = "card_text"> <%= @department.jobroll %> </p>
 
     <%= link_to "Edit", edit_department_path(@department),class:"btn btn-primary" %>
-    <%= link_to 'delete', department_path(@department), method: :delete, class:"btn btn-primary"%>
+    <!--  <%= link_to 'Destroy',  department_path(@department), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'btn btn-primary' %> -->
  </div>
 </div>
 </div>
+
+      

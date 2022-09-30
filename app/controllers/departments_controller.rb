@@ -3,22 +3,31 @@ class DepartmentsController < ApplicationController
  before_action :current_type
 
   def new
+     @departments = Department.all
     @department = Department.new
   end
   
   def index
     @departments = Department.all
+    
   end
     
   def create
      
-    @department = Department.new(d_params)
-  if @department.save
-      redirect_to departments_path
-    else
-      render :new
+    @department = Department.create(d_params)
+    @departments = Department.all
+    respond_to do |format|
+      format.html {redirect_to new_department_path}
+      format.js 
     end
-  end
+   end
+  # if @department.save
+
+  #     redirect_to departments_path
+  #   else
+  #     render :new
+  #   end
+  
 
   def edit
       @department = Department.find(params[:id])
@@ -45,6 +54,12 @@ class DepartmentsController < ApplicationController
     # else 
     @department = Department.find(params[:id])
     @department.destroy
+   respond_to do |format|   
+      format.html { redirect_to department_url }   
+      format.json { head :no_content }   
+      format.js   { render :layout => false }   
+   end   
+
     redirect_to departments_path
   # end
   end
