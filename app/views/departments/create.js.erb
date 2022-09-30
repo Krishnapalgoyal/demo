@@ -1,3 +1,5 @@
+$("#myModal").hide();
 
- ${"#userTables"}.prepend("<%= escape_javascript render('user_row', department: @department)%>")
+$("#userTables").prepend("<%= escape_javascript render(partial: 'departments/newuser.html.erb', locales: { department: @department }) %>");
+
 

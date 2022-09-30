@@ -5,11 +5,15 @@ class DepartmentsController < ApplicationController
   def new
      @departments = Department.all
     @department = Department.new
+    respond_to do |format|
+      format.html {redirect_to new_department_path}
+      format.js
+    end
   end
   
   def index
     @departments = Department.all
-    
+
   end
     
   def create
