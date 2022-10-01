@@ -7,7 +7,7 @@ class EmployeesController < ApplicationController
   
   end
   def index
-    @employee= Employee.all
+    @employee = Employee.search(params[:search])
   end
 
   def show
@@ -49,11 +49,23 @@ class EmployeesController < ApplicationController
     redirect_to employees_path
   # end
   end
+   
+  def search
+   
+    @employee = Employee.search(params[:search])
+    redirect_to employees_path
+  end
+ 
+
+
+
 private
     def employee_params
    
-      params.require(:employee).permit(:name, :contact ,:email ,:type, :password,:department_id ,addresses_attributes: [:id, :c_address, :p_address])
+      params.require(:employee).permit(:name, :contact ,:email ,:type, :search, :password,:department_id ,addresses_attributes: [:id, :c_address, :p_address])
     end
+
+   
 end
 
 

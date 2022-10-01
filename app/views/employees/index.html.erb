@@ -1,14 +1,32 @@
 <div class ="container">
-
-  <p>this is  my employee index</p>
-
-<% if current_type %>
-  <ul>
-    <% @employee.each do |employee| %>
-      <li>
-         <%= link_to employee.name, employee_path(employee.id) %>
-      </li>
+  <div>
+    <%= form_with(url: '/search', method: 'get', local: true) do %>
+      <%= text_field_tag(:search) %>
+      <%= submit_tag("Search")%>
     <% end %>
-  </ul>
-<%end%>
+  </div>
+  <div>
+    <h2>All Employee </h2>
+  </div>
+ <% if current_type %>
+ <div class="table-responsive">
+  <table class="table"id="userTables">
+   <tr>
+      <th> Employee name</th>
+          <th>Designation</th>
+   </tr>
+    
+      <% @employee.each do |employee| %>
+      <tr>
+        <td>
+         <%= link_to employee.name, employee_path(employee.id) %>
+        </td>
+        <td>
+         <%= Department.find(employee.department_id).name%>
+        </td>
+      </tr>
+      <%end%>
+  </table>
+ </div>
+ <%end%>
 </div>

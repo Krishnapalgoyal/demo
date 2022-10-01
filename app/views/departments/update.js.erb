@@ -1,0 +1,3 @@
+$("#myModal").hide();
+
+$("#user_<%= @department.id%>").replaceWith("<%= escape_javascript render "newuser",department: @department%> ");

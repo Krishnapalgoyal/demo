@@ -1,8 +1,9 @@
 
 <div class= container>
    <%= link_to "Add new Department", new_department_path,class:"btn btn-primary",data:{toggle:"modal",target:"#myModal",remote:true}%>
+
     <div class="table-responsive">
-    <table class="table",id="userTables">
+    <table class="table"id="userTables">
      
       <tr>
         <th> Departments</th>
@@ -15,30 +16,32 @@
     <% end %>
     </table>
 </div>
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+         <!--  <button type="button" class="close" data-bs-dismiss="modal" id="close_model">&times;</button> -->
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body" id ="model_body">
+         
+            
+        </div>
+
+        <!-- Modal footer -->
+       <!--  <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="close"=>Close</button>
+        </div> -->
+
       </div>
-
-      <!-- Modal body -->
-      <div class="modal-body" id ="model_body">
-       
-          
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" id="close"=>Close</button>
-      </div>
-
     </div>
   </div>
-</div>
+
 </div>
 
 

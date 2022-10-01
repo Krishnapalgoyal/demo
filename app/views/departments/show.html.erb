@@ -1,21 +1,18 @@
-
-
-
 <div class= container>
   <div class="card">
-  <div class="card-header">
+    <div class="card-header">
     <h1>About Department</h1>
-  </div>
-  <div class="card-body">
+    </div>
+    <div class="card-body">
       <h3 class="card-title">Name of the Department</h3>
-   <h4 class = "card-title"> <%= @department.name  %></h4>
+      <h4 class = "card-title"> <%= @department.name  %></h4>
       <h3 class="card-title">About department</h3>
-   <p class = "card_text"> <%= @department.jobroll %> </p>
+      <p class = "card_text"> <%= @department.jobroll %> </p>
 
-    <%= link_to "Edit", edit_department_path(@department),class:"btn btn-primary" %>
+    <!--     <%= link_to "Edit", edit_department_path(@department),class:"btn btn-primary" %> -->
     <!--  <%= link_to 'Destroy',  department_path(@department), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'btn btn-primary' %> -->
- </div>
-</div>
+    </div>
+  </div>
 </div>
 
       
