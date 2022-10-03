@@ -31,6 +31,7 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem "bootstrap", "~> 5.0"
 gem "bootstrap_form", "~> 5.1"
+gem "will_paginate"
 
 
 group :development, :test do

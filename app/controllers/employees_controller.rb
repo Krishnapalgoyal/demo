@@ -4,10 +4,11 @@ class EmployeesController < ApplicationController
   def new 
     @employee = Employee.new
     @employee.addresses.new
-  
+    @path =  "/employees/"
   end
   def index
-    @employee = Employee.search(params[:search])
+     @employee = Employee.search(params[:search]).paginate(:page => params[:page], :per_page=>2)
+     # @employee = Employee.all.paginate(:page => params[:page], :per_page=>1)
   end
 
   def show
@@ -15,7 +16,6 @@ class EmployeesController < ApplicationController
   end
 
   def create
-
      @employee = Employee.new(employee_params)
     if @employee.save
       redirect_to employees_path
@@ -27,11 +27,13 @@ class EmployeesController < ApplicationController
 
   def edit
     @employee = Employee.find(params[:id])
+      @path =  "/employees/#{@employee.id}"
   end
 
   def update
     @employee = Employee.find(params[:id])
-
+   # Address.find_by(employee_id: @employee.id).id
+    @path =  "/employees#update"
     if @employee.update(employee_params)
       redirect_to @employee
     else
@@ -60,8 +62,8 @@ class EmployeesController < ApplicationController
 
 
 private
+
     def employee_params
-   
       params.require(:employee).permit(:name, :contact ,:email ,:type, :search, :password,:department_id ,addresses_attributes: [:id, :c_address, :p_address])
     end
 

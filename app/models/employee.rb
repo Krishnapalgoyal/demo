@@ -14,5 +14,9 @@ class Employee < ApplicationRecord
         all
     end
   end 
+
+
     
 end
+
+

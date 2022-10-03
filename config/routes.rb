@@ -7,8 +7,11 @@ Rails.application.routes.draw do
  get '/search' => 'employees#index'
 
  get "/edit/:id/" => "employees#edit", as: :edit_employee
+ patch "/update/:id/" => "employees#update", as: :update_employee
  resources :sessions
- resources :employees
+ resources :employees do 
+ resource :addresses
+ end
 
  resources :departments do
   get :all_employee, on: :member
