@@ -1,4 +1,6 @@
-<div class ="container">
+
+ <% if current_type %>
+ <div class ="container">
   <div>
     <%= form_with(url: '/search', method: 'get', local: true) do %>
       <%= text_field_tag(:search) %>
@@ -10,7 +12,6 @@
   <div>
       <h2>All Employee </h2>
   </div>
- <% if current_type %>
  <div class="table-responsive">
   <table class="table"id="userTables">
    <tr>
@@ -33,5 +34,7 @@
        
   </table>
  </div>
- <%end%>
 </div>
+ <% else %>
+       <%= link_to "leave", leaves_path, class:'btn btn-success float-right'%>
+<%end%>

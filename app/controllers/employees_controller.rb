@@ -53,13 +53,25 @@ class EmployeesController < ApplicationController
   end
    
   def search
-   
     @employee = Employee.search(params[:search])
     redirect_to employees_path
   end
- 
 
+  # def leave
+  #   if current_type
+  #   @leave = Leave.find_by(status: false) 
+  #   else
 
+  # def leave_request
+  #   @leave = Leave.create(employee_id: current_user.id, status: false)
+  #   flash[:notice] = "request is send."
+  #   redirect_to employees_path(current_user.id)
+  # end
+  
+  # def leave_index
+  #   @leave = Leave.find_by(status:false)
+  #   @employee =Employee.find_by(id:@leave.employee_id).name
+  # end
 
 private
 

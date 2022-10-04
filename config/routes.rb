@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
  get "/edit/:id/" => "employees#edit", as: :edit_employee
  patch "/update/:id/" => "employees#update", as: :update_employee
+
+ # post '/request'=>"employees#leave_request"
+ # get '/leave'  =>"employees#leave_index"
+ resources :leaves
  resources :sessions
  resources :employees do 
  resource :addresses
@@ -16,7 +20,5 @@ Rails.application.routes.draw do
  resources :departments do
   get :all_employee, on: :member
  end
-
-   
 
 end
