@@ -1,4 +1,4 @@
-
+<div class ="container">
 <%= form_with url: @path, model: @employee,remote:false do |form| %>
     <%= form.label :name %>
     <%= form.text_field :name %><br>
@@ -12,7 +12,7 @@
     <% end %>
   Addresses:
   <ul>
-    <%= form.fields_for  :addresses , Address.new do |addresses_form| %>
+    <%= form.fields_for  :addresses do |addresses_form| %>
       <li>
         <%= addresses_form.label :c_address %>
         <%= addresses_form.text_field :c_address %>
@@ -44,3 +44,4 @@
  
     <%= form.submit %>
 <%end%>
+</div>
