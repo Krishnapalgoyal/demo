@@ -5,7 +5,7 @@ class LeavesController < ApplicationController
   end 
 
   def index
-    @leaves = Leave.all
+    @leaves = Leave.where(status:"requested")
   end
   def create
      @leave = Leave.new(leave_params)
@@ -14,7 +14,17 @@ class LeavesController < ApplicationController
     else
        render new
     end
+  end
 
+  def leave_status
+   @leave = Leave.find_by(employee_id: params[:id])
+   @leave.update(status:"approved")
+   redirect_to leaves_path
+  end
+  def rejected
+   @leave = Leave.find_by(employee_id: params[:id])
+   @leave.update(status:"rejected")
+   redirect_to leaves_path
   end
   
   private

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
  # post '/request'=>"employees#leave_request"
  # get '/leave'  =>"employees#leave_index"
  resources :leaves
+ get "/leave_status/:id/" => "leaves#leave_status", as: :leave_status
+ get "/rejected/:id/" => "leaves#rejected", as: :rejected
  resources :sessions
  resources :employees do 
  resource :addresses

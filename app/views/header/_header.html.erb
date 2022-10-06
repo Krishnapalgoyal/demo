@@ -1,10 +1,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<<<<<<< HEAD
-  <a class="navbar-brand" href="#">Employee management</a>
-=======
   <a class="navbar-brand text-warning" href="#">Employee management</a>
->>>>>>> applying-bootstrap
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,6 +22,7 @@
               <%= link_to "All Department",departments_path, class:"dropdown-item"%>
               <%= link_to "all employee",employees_path, class:"dropdown-item" %>
               <% else%>
+              <%= link_to "status",employees_path, class:"dropdown-item" %>
               <%= link_to "view profile", employee_path(current_user.id),class:"dropdown-item"%> 
               <% end %> 
             </div>
@@ -36,6 +33,9 @@
          
         <form class="form-inline my-2 my-lg-0 float-right">
           <% if current_user %>
+          <% if current_type %>
+          <%= link_to "Leave", leaves_path, class:"btn btn-success"%>
+          <%end%>
           <%= link_to "log out", logout_path( @employee), method: :delete, class:"btn btn-danger"%>
           <% else %>
           <%= link_to "log in", new_session_path, class:"btn btn-success"%>

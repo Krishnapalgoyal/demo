@@ -1,15 +1,28 @@
 <%if ! current_type%>
-  <%= form_with scope: :leave,   model: @leave do |form|%>
-    <%=form.label :from_date%>
-    <%=form.date_field :from_date%></br>
-    <%=form.label :to_date%>
-    <%=form.date_field :to_date%></br>
-    <%=form.label :total_day%>
-    <%=form.text_field :total_day%>
-    <%=hidden_field_tag :employee_id, current_user.id %>
-    <%= submit_tag "Leave request" %>           
-    <% end %>
-    <% flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, class: name %>
-  <% end %>
+  <%= render :partial => "leaveform" %>
+  <%else%>
+  <table class="table"id="userTables">
+   <tr>
+      <th> Employee  name</th>
+          <th>status </th>
+   </tr>
+      <div class = text-center>
+      </div>
+      <% @leaves.each do |leave| %>
+      <tr>
+        <td>
+         <%= Employee.find(leave.employee_id).name %>
+        </td>
+        <td>
+
+         <%= link_to "Approve", leave_status_path(leave.employee_id), class:"btn btn-success"%>
+        </td>
+        <td>
+    
+         <%= link_to "Reject", rejected_path(leave.employee_id), class:"btn btn-danger"%>
+        </td>
+      </tr>
+      <%end%>
+       
+  </table>
 <%end%>
