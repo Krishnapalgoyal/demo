@@ -20,6 +20,7 @@ class EmployeesController < ApplicationController
   end
 
   def create
+    debugger
      @employee = Employee.new(employee_params)
     if @employee.save
       redirect_to employees_path

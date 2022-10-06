@@ -1,5 +1,5 @@
 
-<%= form_with model: @employee do |form| %>
+<%= form_with url: @path, model: @employee,remote:false do |form| %>
     <%= form.label :name %>
     <%= form.text_field :name %><br>
       <% @employee.errors.full_messages_for(:name).each do |message| %>
