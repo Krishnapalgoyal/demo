@@ -1,6 +1,10 @@
-     
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<<<<<<< HEAD
   <a class="navbar-brand" href="#">Employee management</a>
+=======
+  <a class="navbar-brand text-warning" href="#">Employee management</a>
+>>>>>>> applying-bootstrap
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,36 +13,35 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <%= link_to "Home", root_path, class: "nav-link" %>
-        
       </li>
-      <% if current_user %>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          
-          <% if current_type %>
-          <%= link_to "Add new employ", new_employee_path, class:"dropdown-item" %>
-          <%= link_to "All Department",departments_path, class:"dropdown-item"%>
-          <%= link_to "all employee",employees_path, class:"dropdown-item" %>
-          <% else%>
-          <%= link_to "view profile", employee_path(current_user.id),class:"dropdown-item"%> 
-          <% end %> 
-          <% end %> 
-      </li>
-     
-    </ul>
-   
-    <form class="form-inline my-2 my-lg-0 ">
-   <% if current_user %>
-   <%= link_to "log out", logout_path( @employee), method: :delete, class:"nav-link"%>
-   <% else %>
-    <%= link_to "log in", new_session_path, class:"nav-link"%>
-  <% end %>
-    </form>
-  </div>
-  </div>
+         <% if current_user %>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              
+              <% if current_type %>
+              <%= link_to "Add new employ", new_employee_path, class:"dropdown-item" %>
+              <%= link_to "All Department",departments_path, class:"dropdown-item"%>
+              <%= link_to "all employee",employees_path, class:"dropdown-item" %>
+              <% else%>
+              <%= link_to "view profile", employee_path(current_user.id),class:"dropdown-item"%> 
+              <% end %> 
+            </div>
+            <% end %> 
+          </li>
+           
+     </ul>
+         
+        <form class="form-inline my-2 my-lg-0 float-right">
+          <% if current_user %>
+          <%= link_to "log out", logout_path( @employee), method: :delete, class:"btn btn-danger"%>
+          <% else %>
+          <%= link_to "log in", new_session_path, class:"btn btn-success"%>
+          <% end %>
+        </form>
+    </div>
 </nav>
 
  

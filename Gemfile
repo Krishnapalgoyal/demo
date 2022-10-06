@@ -32,6 +32,9 @@ gem 'bootstrap-sass'
 gem "bootstrap", "~> 5.0"
 gem "bootstrap_form", "~> 5.1"
 
+gem "will_paginate"
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
