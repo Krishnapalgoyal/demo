@@ -59,13 +59,17 @@ class EmployeesController < ApplicationController
 
 private
 
-    def employee_params
-      params.require(get_access.to_sym).permit(:name, :contact ,:email ,:type, :search, :password,:department_id ,addresses_attributes: [:id, :c_address, :p_address])
-    end
+  def employee_params
+    params.require(get_access.to_sym).permit(:name, :contact ,:email ,:type, :search, :password,:department_id ,addresses_attributes: [:id, :c_address, :p_address])
+  end
 
-    def get_access
-      params[:admin].present? ? "admin" : "employe" 
-    end
+  def get_access
+    if params[:action] == "create"
+      "employee"
+    else
+      params[:admin].present? ? "admin" : "employe"
+    end 
+  end
 end
 
 

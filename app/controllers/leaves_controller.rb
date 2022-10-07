@@ -1,5 +1,6 @@
 class LeavesController < ApplicationController
-
+before_action :require_login
+ before_action :current_type
   def new
    @leave = Leave.new  
   end 
