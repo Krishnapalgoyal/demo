@@ -1,6 +1,6 @@
 class LeavesController < ApplicationController
 before_action :require_login
- before_action :current_type
+ 
   def new
    @leave = Leave.new  
   end 
@@ -18,12 +18,13 @@ before_action :require_login
   end
 
   def leave_status
-   @leave = Leave.find_by(employee_id: params[:id])
+
+   @leave = Leave.find(params[:id])
    @leave.update(status:"approved")
    redirect_to leaves_path
   end
   def rejected
-   @leave = Leave.find_by(employee_id: params[:id])
+   @leave = Leave.find(params[:id])
    @leave.update(status:"rejected")
    redirect_to leaves_path
   end

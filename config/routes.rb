@@ -14,8 +14,13 @@ Rails.application.routes.draw do
  resources :leaves
  get "/leave_status/:id/" => "leaves#leave_status", as: :leave_status
  get "/rejected/:id/" => "leaves#rejected", as: :rejected
+
+ get "/deleted_employee/" => "employees#deleted_employee", as: :deleted_employee
+
+ get "/restore_employee/:id" => "employees#restore_employee", as: :restore_employee
  resources :sessions
  resources :employees do 
+
  resource :addresses
  end
 

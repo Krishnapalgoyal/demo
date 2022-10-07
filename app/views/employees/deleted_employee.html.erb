@@ -1,0 +1,28 @@
+<div class ="container">
+  <h1>All deleted employee</h1>
+  <div class="table-responsive">
+    <table class="table"id="userTables">
+      <tr>
+      <th> Employee name</th>
+      <th>Designation</th>
+      </tr>
+      <div class = text-center>
+
+      </div>
+      <% @employee.each do |employee| %>
+      <tr>
+      <td>
+      <%=  employee.name %>
+      </td>
+      <td>
+      <%= Department.find(employee.department_id).name%>
+      </td>
+      <td>
+        <%= link_to "restore", restore_employee_path(employee.id), class:"btn btn-success"%>
+      </td>
+      </tr>
+      <%end%>
+
+    </table>
+  </div>
+</div>

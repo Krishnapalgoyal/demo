@@ -57,6 +57,15 @@ class EmployeesController < ApplicationController
     redirect_to employees_path
   end
 
+  def deleted_employee
+    @employee = Employee.with_deleted.where.not(deleted_at:nil)
+  end
+  def restore_employee
+    @employee = Employee.with_deleted.find(params[:id])
+      @employee.update(deleted_at:nil) 
+     redirect_to employees_path
+  end
+
 private
 
   def employee_params

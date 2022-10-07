@@ -6,6 +6,7 @@
       <%= text_field_tag(:search) %>
       <%= submit_tag("Search")%>
        <%= link_to "All", employees_path, class:'btn btn-success float-right'%>
+       <%= link_to "Deleted", deleted_employee_path, class:'btn btn-danger float-right'%>
     <% end %>
     
   </div>
