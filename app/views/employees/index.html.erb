@@ -13,7 +13,18 @@
   <div>
       <h2>All Employee </h2>
   </div>
- <div class="table-responsive">
+<div class = "container">
+  <% @employee.each do |employee| %>
+  <div class = "card">
+  <div class ="crad-body">
+    <%= link_to employee.name, employee_path(employee.id) %>
+  </div>
+  </div>
+  <%end%>
+   <%= will_paginate @employee %>
+</div>
+
+ <!-- <div class="table-responsive">
   <table class="table"id="userTables">
    <tr>
       <th> Employee name</th>
@@ -35,7 +46,7 @@
        
   </table>
  </div>
-</div>
+ --></div>
  <% else %>
        <%= link_to "leave", leaves_path, class:'btn btn-success float-right'%>
        <div class="table-responsive">
