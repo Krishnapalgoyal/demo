@@ -16,7 +16,12 @@ class Employee < ApplicationRecord
     end
   end 
 
-
+ def is_admin?
+    current_user.type == "Admin"
+  end
+  def is_employee?
+    current_user.type == "Employe"
+  end
     
 end
 
