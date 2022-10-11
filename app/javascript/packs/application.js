@@ -23,6 +23,9 @@ import 'select2'
 
 $(document).ready(function(){ 
  $('#search').select2({
-    tags: true,
+   
+    placeholder: "plese select name",
+     multiple: true,
+     scrollAfterSelect: true
   });
 })
