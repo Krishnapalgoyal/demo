@@ -5,7 +5,7 @@
     <%= form_with(url: '/search', method: 'get', local: true) do |form|%>
 
   <!--     <%= text_field_tag(:search) %> -->
-  <%= form.collection_select :search, Employee.order(:name), :name, :name %>
+  <%= form.collection_select :search, Employee.order(:name), :name, :name, class:'form-control'%>
       <%= submit_tag("Search")%>
        <%= link_to "All", employees_path, class:'btn btn-success float-right'%>
        <%= link_to "Deleted", deleted_employee_path, class:'btn btn-danger float-right'%>
