@@ -14,15 +14,25 @@
       <h2>All Employee </h2>
   </div>
 <div class = "container">
-  <% @employee.each do |employee| %>
-  <div class = "card">
-  <div class ="crad-body">
-    <%= link_to employee.name, employee_path(employee.id) %>
-  </div>
-  </div>
-  <%end%>
-   <%= will_paginate @employee %>
+   <div class="row">
+    <% @employee.each do |employee| %>
+    <div class="col-4">
+    <div class = "card">
+       <%if employee.avatar.attached? %>
+   <img src="<%=(url_for(employee.avatar))%>" class="card-img-top" alt="name">
+      <%end%>
+      <div class="card-header">
+       <%= link_to employee.name, employee_path(employee.id)%>
+      </div>
+      <div class="crad-body">
+         <%= Department.find(employee.department_id).name%>
+      </div>
+      </div>
+     </div>
+    <%end%>
+   </div>
 </div>
+ <%= will_paginate @employee, class:"text-center"%>
 
  <!-- <div class="table-responsive">
   <table class="table"id="userTables">

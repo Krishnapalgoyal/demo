@@ -8,7 +8,7 @@ class EmployeesController < ApplicationController
   end
   def index
     if current_type
-     @employee = Employee.search(params[:search]).paginate(:page => params[:page], :per_page=>2)
+     @employee = Employee.search(params[:search]).paginate(:page => params[:page], :per_page=>6)
      # @employee = Employee.all.paginate(:page => params[:page], :per_page=>1)
    else
     @leaves = Leave.where(employee_id:current_user.id)
@@ -69,7 +69,7 @@ class EmployeesController < ApplicationController
 private
 
   def employee_params
-    params.require(get_access.to_sym).permit(:name, :contact ,:email ,:type, :search, :password,:department_id ,addresses_attributes: [:id, :c_address, :p_address])
+    params.require(get_access.to_sym).permit(:name, :contact ,:email ,:type, :search, :password,:department_id, :avatar,addresses_attributes: [:id, :c_address, :p_address])
   end
 
   def get_access

@@ -1,15 +1,21 @@
 <div class ="container">
 <%= form_with url: @path, model: @employee do |form| %>
+<div class="crad">
+  <div class="crad-body">
+    <div class="mb-3">
     <%= form.label :name %>
     <%= form.text_field :name %><br>
       <% @employee.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
     <% end %>
+   </div>
+   <div class="mb-3">
     <%= form.label :contact %>
     <%= form.number_field :contact%><br>
       <% @employee.errors.full_messages_for(:contact).each do |message| %>
       <div><%= message %></div>
     <% end %>
+</div>
   Addresses:
   <ul>
     <%= form.fields_for  :addresses do |addresses_form| %>
@@ -23,25 +29,34 @@
       </li>
     <% end %>
   </ul>
+  <div class="mb-3">
     <%= form.label :email%>
     <%= form.email_field :email %><br>
       <% @employee.errors.full_messages_for(:email).each do |message| %>
       <div><%= message %></div>
     <% end %>
-
+   </div>
+   <div class="mb-3">
     <%= form.label :type %>
     <%= form.text_field :type %><br>
-
+    </div>
+    <div class="mb-3">
     <%= form.label :password%>
     <%= form.password_field :password %><br>
       <% @employee.errors.full_messages_for(:password).each do |message| %>
       <div><%= message %></div>
     <% end %>
-
+   </div>
+   <div class="mb-3">
     <%= form.label :department %>
    <%= form.collection_select :department_id, Department.order(:name), :id, :name %></br>
-
- 
-    <%= form.submit %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :profile_photo %>
+    <%= form.file_field :avatar %><br>
+  </div>
+    <%= form.submit%>
+  </div>
+  </div>
 <%end%>
 </div>

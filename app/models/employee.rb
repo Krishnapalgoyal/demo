@@ -4,6 +4,7 @@ class Employee < ApplicationRecord
   has_many :leaves, class_name: "Leave", dependent: :destroy
   accepts_nested_attributes_for :addresses
    acts_as_paranoid
+   has_one_attached :avatar
  # validates :name,:contact,:email ,:password, presence: { message: "must be given please" }
  # validates :email, uniqueness: { message: "email is allready presence" }
  # validates :password, uniqueness: { message: "password is allready presence" }
