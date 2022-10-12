@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
  before_action :require_login
- before_action :current_type
+ # before_action :current_type
 
   def new
      @departments = Department.all
@@ -13,7 +13,7 @@ class DepartmentsController < ApplicationController
   
   def index
     @departments = Department.all
-
+   authorize @departments
   end
     
   def create

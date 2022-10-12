@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   helper_method :logged_in?
   helper_method :require_login
   helper_method :current_user
-  helper_method :current_employee
+  helper_method :current_type
 
      # def logged_in?
     #     session[:employ_id] 
@@ -26,7 +28,12 @@ class ApplicationController < ActionController::Base
     current_user.type == "Admin"
   end
 
-  
+  private
+
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_back(fallback_location: root_path)
+  end
 
 end
 

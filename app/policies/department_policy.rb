@@ -8,28 +8,56 @@
 #   end
 # end
 
-class DepartmentPolicy < Struct.new(:user, :department)
-  def index?
-    user.is_admin?
+class DepartmentPolicy < ApplicationPolicy 
+  attr_reader :user, :record
+
+
+
+  def initialize(employee, department)
+    @employee = employee
+   @department = department
   end
 
-  def new?
-    user.is_admin?
+  def index?
+    @employee.type == "Admin"
+  end
+
+  def show?
+    false
   end
 
   def create?
-    user.is_admin?
+    false
   end
 
-  def edit?
-    user.is_admin?
+  def new?
+    create?
   end
 
   def update?
-    user.is_admin?
+    false
+  end
+
+  def edit?
+    update?
   end
 
   def destroy?
-    user.is_admin?
+    false
+  end
+
+  class Scope
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
+    end
+
+    def resolve
+      raise NotImplementedError, "You must define #resolve in #{self.class}"
+    end
+
+    private
+
+    attr_reader :user, :scope
   end
 end
