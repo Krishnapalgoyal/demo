@@ -7,8 +7,10 @@ class EmployeesController < ApplicationController
     @path =  "/employees/"
   end
   def index
+    
     if current_type
      @employee = Employee.search(params[:search]).paginate(:page => params[:page], :per_page=>2)
+     
      # @employee = Employee.all.paginate(:page => params[:page], :per_page=>1)
    else
     @leaves = Leave.where(employee_id:current_user.id)
@@ -16,6 +18,7 @@ class EmployeesController < ApplicationController
   end
 
   def show
+  
     @employee = Employee.find(params[:id])
   end
 

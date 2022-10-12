@@ -1,6 +1,4 @@
-
-
-class DepartmentPolicy < ApplicationPolicy 
+class LeavePolicy < ApplicationPolicy
   # class Scope < Scope
   #   # NOTE: Be explicit about which records you allow access to!
   #   # def resolve
@@ -8,6 +6,7 @@ class DepartmentPolicy < ApplicationPolicy
   #   # end
 
     
+  # end
   # end
   attr_reader :current_user, :department
   def initialize(current_user, department)
@@ -18,49 +17,37 @@ class DepartmentPolicy < ApplicationPolicy
   def index?
     @employee.type == "Admin"
   end
-
-  def show?
-    @employee.type == "Admin"
-  end
-
-  def create?
-    @employee.type == "Admin"
-  end
-
-  def new?
+   def new?
     create?
+   end    
+  def create?
+    @employee.type == "Employe"
   end
 
-  def update?
-   @employee.type == "Admin"
-  end
-
-  def edit?
-    update?
-  end
-
-  def destroy?
-  @employee.type == "Admin"
-  end
-  
-  def all_employee?
+  def leave_status?
      @employee.type == "Admin"
   end
 
-  class Scope
+  def rejected?
+    @employee.type == "Admin"
+  end
+
+  class Scope < LeavePolicy
     def initialize(current_user, scope)
       @user = current_user
       @scope = scope
     end
 
     def resolve
-      raise NotImplementedError, "You must define #resolve in #{self.class}"
+      if @user.type == "Admin"
+        scope.all
+      else
+        scope.where(status:"requested")
+      end
     end
 
     private
 
-    attr_reader :user, :scope
+    attr_reader :current_user, :scope
   end
-
-
 end
