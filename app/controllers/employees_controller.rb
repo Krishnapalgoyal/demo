@@ -72,10 +72,15 @@ class EmployeesController < ApplicationController
      redirect_to employees_path
   end
 
+  def bulk_destroy
+    Employee.with_deleted.where(id: params[:collection_ids]).destroy_all
+     redirect_to deleted_employee_path
+  end
+
 private
 
   def employee_params
-    params.require(get_access.to_sym).permit(:name, :contact ,:email ,:type, :search, :password,:department_id, :avatar,addresses_attributes: [:id, :c_address, :p_address])
+    params.require(get_access.to_sym).permit(:name, :contact ,:email ,:type, :search, :password,:department_id,:collection_ids, :avatar,addresses_attributes: [:id, :c_address, :p_address])
   end
 
   def get_access

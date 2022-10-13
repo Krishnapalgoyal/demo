@@ -3,31 +3,34 @@
   <div class="table-responsive">
     <table class="table"id="userTables">
       <tr>
+        <th>id</th>
       <th> Employee name</th>
       <th>Designation</th>
       <th>Action</th>
 
       </tr>
-      <div class = text-center>
-
-      </div>
-      <% @employee.each do |employee| %>
+   <%= form_for :employees, url: "/bulk_destroy/" do |form| %>
+        <% @employee.each do |employee| %>
       <tr>
-      <td>
-      <%=  employee.name %>
-      </td>
-      <td>
-      <%= Department.find(employee.department_id).name%>
-      </td>
-      <td>
-        <%= link_to "restore", restore_employee_path(employee.id), class:"btn btn-success"%>
-      </td>
-      <td>
-        <%= link_to "Delete ", really_destroy_path(employee.id), class:"btn btn-danger"%>
-      </td>
+        <td>
+           <%= employee.id %> <input type="checkbox" name="collection_ids[]" value="<%= employee.id %>" />
+        </td>
+        <td>
+          <%=  employee.name %>
+        </td>
+        <td>
+          <%= Department.find(employee.department_id).name%>
+        </td>
+        <td>
+          <%= link_to "restore", restore_employee_path(employee.id), class:"btn btn-success"%>
+        </td>
+        <td>
+          <%= link_to "Delete ", really_destroy_path(employee.id), class:"btn btn-danger"%>
+        </td>
       </tr>
       <%end%>
-
+      <%= form.submit "Delete All" %>
+   <%end%>
     </table>
   </div>
 </div>

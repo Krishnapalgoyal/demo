@@ -20,8 +20,8 @@ Rails.application.routes.draw do
  get "/restore_employee/:id" => "employees#restore_employee", as: :restore_employee
  resources :sessions
  resources :employees do 
-
  resource :addresses
+ 
  end
 
  resources :departments do
@@ -29,5 +29,5 @@ Rails.application.routes.draw do
  end
 
  get "/really_destroy/:id" => "employees#really_destroy",as: :really_destroy
-
+ post "/bulk_destroy/" =>"employees#bulk_destroy"
 end
