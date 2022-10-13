@@ -8,7 +8,7 @@ class EmployeesController < ApplicationController
   end
   def index
     if current_type
-     @employee = Employee.search(params[:search]).paginate(:page => params[:page], :per_page=>6)
+     @employee = Employee.order("created_at DESC").search(params[:search]).paginate(:page => params[:page], :per_page=>3)
      # @employee = Employee.all.paginate(:page => params[:page], :per_page=>1)
    else
     @leaves = Leave.where(employee_id:current_user.id)
@@ -49,6 +49,12 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
     @employee.destroy
     redirect_to employees_path
+  # end
+  end
+  def really_destroy
+    @employee = Employee.with_deleted.find(params[:id])
+    @employee.destroy_fully!
+    redirect_to deleted_employee_path
   # end
   end
    

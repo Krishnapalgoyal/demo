@@ -1,27 +1,28 @@
-<div class= container>
-  <div class="card">
+<div class= "container ">
+  <div class="card text-center" style="width:400px">
     <div class="card-header">
-    <h1>About Employee</h1>
+      <h4 class="text-center">About <%=@employee.name%></h4>
     </div>
-     <img src="" class="card-img-top" alt="name">
-     <%if @employee.avatar.attached? %>
-     <img src="<%=(url_for(@employee.avatar))%>" class="card-img-top" alt="name">
-     <%end%>
+    <div class="h-50">
+      <%if @employee.avatar.attached? %>
+      <img src="<%=(url_for(@employee.avatar))%>" class="card-img-top" >
+      <%end%>
+    </div>
     <div class="card-body">
-        <h3><%= @employee.name%></h3>
-        <h3><%= @employee.contact %></h3>
-        <h3> <%= @employee.type%></h3>
-        <h3><%= @employee.email%></h3>
-        <h3><%= @employee.password%></h3>
-        <h3> <%= Department.find(@employee.department_id).name%></h3>
+      <h3><%= @employee.name%></h3>
+      <h3><%= @employee.contact %></h3>
+      <h3> <%= @employee.type%></h3>
+      <h3><%= @employee.email%></h3>
+      <h3><%= @employee.password%></h3>
+      <h3> <%= Department.find(@employee.department_id).name%></h3>
 
-        <h3><% if current_type %></h3>
+      <% if current_type %>
         <ul>
-          <%= link_to "Edit", edit_employee_path(@employee.id), class:"btn btn-primary"%>
-          <%=link_to 'delete', employee_path(employee_id = @employee.id), method: :delete, class:"btn btn-danger" %>
+        <%= link_to "Edit", edit_employee_path(@employee.id), class:"btn btn-primary"%>
+        <%=link_to 'delete', employee_path(employee_id = @employee.id), method: :delete, class:"btn btn-danger" %>
         </ul>
-        <% end %> 
-          
+      <% end %> 
+
     </div>
   </div>
 </div>

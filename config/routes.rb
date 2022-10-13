@@ -28,4 +28,6 @@ Rails.application.routes.draw do
   get :all_employee, on: :member
  end
 
+ get "/really_destroy/:id" => "employees#really_destroy",as: :really_destroy
+
 end

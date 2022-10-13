@@ -5,6 +5,8 @@
       <tr>
       <th> Employee name</th>
       <th>Designation</th>
+      <th>Action</th>
+
       </tr>
       <div class = text-center>
 
@@ -19,6 +21,9 @@
       </td>
       <td>
         <%= link_to "restore", restore_employee_path(employee.id), class:"btn btn-success"%>
+      </td>
+      <td>
+        <%= link_to "Delete ", really_destroy_path(employee.id), class:"btn btn-danger"%>
       </td>
       </tr>
       <%end%>

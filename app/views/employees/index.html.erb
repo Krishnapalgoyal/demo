@@ -16,23 +16,32 @@
 <div class = "container">
    <div class="row">
     <% @employee.each do |employee| %>
-    <div class="col-4">
-    <div class = "card">
-       <%if employee.avatar.attached? %>
-   <img src="<%=(url_for(employee.avatar))%>" class="card-img-top" alt="name">
-      <%end%>
-      <div class="card-header">
-       <%= link_to employee.name, employee_path(employee.id)%>
+    <div class="col-4 w-100 p-3">
+    <div class = "card  m-4 shadow  bg-white rounded" >
+      <div class = "">
+          <%if employee.avatar.attached? %>
+            <img src="<%=(url_for(employee.avatar))%>" class="card-img-top  p-3 img-circle" width="304" height="304" alt="name">
+            <%else%>
+             <%= image_tag("defalt.jpg", class:"card-img-top  p-3 img-circle",width:"304",height:"304",alt:"name")%>
+         <%end%>
       </div>
-      <div class="crad-body">
+      <div class="card-header text-center">
+      <h4> <%=  employee.name%></h4>
+      </div>
+      <div class="crad-body text-center">
          <%= Department.find(employee.department_id).name%>
+      </div>
+      <div class="text-center mt-2 p-0">
+          <%= link_to "see profile", employee_path(employee.id) ,class:"btn btn-success"%>
       </div>
       </div>
      </div>
     <%end%>
    </div>
 </div>
- <%= will_paginate @employee, class:"text-center"%>
+<div class="text-center">
+ <%= will_paginate @employee,renderer: BootstrapPagination::Rails %>
+</div>
 
  <!-- <div class="table-responsive">
   <table class="table"id="userTables">
