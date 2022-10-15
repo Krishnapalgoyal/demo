@@ -10,11 +10,13 @@
 
       </tr>
    <%= form_for :employees, url: "/bulk_destroy/" do |form| %>
+   <input type = "checkbox" id = "select_all" onchange="checkAll(this)">
+   <label for="select_all">Select all</label>
+        </td>
         <% @employee.each do |employee| %>
       <tr>
         <td>
            <%= employee.id %> <input type="checkbox" name="collection_ids[]" value="<%= employee.id %>" />
-        </td>
         <td>
           <%=  employee.name %>
         </td>
@@ -34,3 +36,20 @@
     </table>
   </div>
 </div>
+
+ <script>
+         var checkboxes = document.querySelectorAll("input[type = 'checkbox']");
+         function checkAll(myCheckbox){
+          if(myCheckbox.checked == true){
+            checkboxes.forEach(function(checkbox){
+              checkbox.checked = true;
+            });
+          }
+          else{
+            checkboxes.forEach(function(checkbox){
+              checkbox.checked = false;
+            });
+          }
+          
+         }
+ </script>
