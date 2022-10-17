@@ -1,0 +1,2 @@
+class AssignLeave < ApplicationRecord
+end

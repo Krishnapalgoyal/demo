@@ -21,8 +21,10 @@ Rails.application.routes.draw do
  resources :sessions
  resources :employees do 
  resource :addresses
- 
  end
+  resources :assign_leaves do
+    get "/leave_assign"  => "assign_leaves#leave_assign", as: :leave_asign, on: :member
+  end
 
  resources :departments do
   get :all_employee, on: :member

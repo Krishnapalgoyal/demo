@@ -4,8 +4,6 @@
         <%=form.date_field :from_date, class:"form-control"%></br>
         <%=form.label :to_date%>
         <%=form.date_field :to_date, class:"form-control"%></br>
-        <%=form.label :total_day%>
-        <%=form.text_field :total_day,class:"form-control"%>
 
         <%=form.hidden_field :employee_id, value: current_user.id %>
         <%= submit_tag "Leave request", class:"btn btn-primary"%>           

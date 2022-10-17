@@ -1,6 +1,6 @@
 class LeavesController < ApplicationController
 before_action :require_login
- 
+
   def new
    @leave = Leave.new  
   end 
@@ -31,6 +31,6 @@ before_action :require_login
   
   private
    def leave_params
-      params.require(:leave).permit(:employee_id,:from_date, :to_date,:total_day)
+      params.require(:leave).permit(:employee_id,:from_date, :to_date )
     end
 end

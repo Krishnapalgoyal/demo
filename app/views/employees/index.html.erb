@@ -76,6 +76,10 @@
  </div>
  --></div>
  <% else %>
+   <p>Leave in account= <%= assignd_leave%></p>
+   <p>Approved Leave <%=total_leave%>
+ 
+
        <%= link_to "leave", leaves_path, class:'btn btn-success float-right'%>
        <div class="table-responsive">
   <table class="table"id="userTables">
@@ -91,10 +95,10 @@
       <% @leaves.each do |leave| %>
       <tr>
         <td>
-         <%=  leave.from_date %>
+         <%=  leave.from_date.to_date %>
         </td>
         <td>
-         <%=  leave.to_date %>
+         <%=  leave.to_date.to_date %>
         </td>
         <td>
          <%=  leave.total_day %>
