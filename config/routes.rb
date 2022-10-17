@@ -30,6 +30,6 @@ Rails.application.routes.draw do
 
  get "/really_destroy/:id" => "employees#really_destroy",as: :really_destroy
  post "/bulk_destroy/" =>"employees#bulk_destroy"
- post "/bulk_delete/" =>"employees#bulk_delete"
+ delete "/bulk_delete/" =>"employees#bulk_delete"
 
 end

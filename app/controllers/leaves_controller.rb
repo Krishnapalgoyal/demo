@@ -11,7 +11,7 @@ before_action :require_login
   def create
      @leave = Leave.new(leave_params)
     if @leave.save
-      redirect_to leaves_path
+      redirect_to employees_path
     else
        render new
     end

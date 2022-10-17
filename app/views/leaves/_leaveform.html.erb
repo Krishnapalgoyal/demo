@@ -1,14 +1,16 @@
-<%= form_with scope: :leave,   model: @leave do |form|%>
-    <%=form.label :from_date%>
-    <%=form.date_field :from_date%></br>
-    <%=form.label :to_date%>
-    <%=form.date_field :to_date%></br>
-    <%=form.label :total_day%>
-    <%=form.text_field :total_day%>
+<div class="container">
+    <%= form_with scope: :leave,   model: @leave do |form|%>
+        <%=form.label :from_date%>
+        <%=form.date_field :from_date, class:"form-control"%></br>
+        <%=form.label :to_date%>
+        <%=form.date_field :to_date, class:"form-control"%></br>
+        <%=form.label :total_day%>
+        <%=form.text_field :total_day,class:"form-control"%>
 
-    <%=form.hidden_field :employee_id, value: current_user.id %>
-    <%= submit_tag "Leave request" %>           
-    <% end %>
-    <% flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, class: name %>
-  <% end %>
+        <%=form.hidden_field :employee_id, value: current_user.id %>
+        <%= submit_tag "Leave request", class:"btn btn-primary"%>           
+        <% end %>
+        <% flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, class: name %>
+      <% end %>
+</div>
