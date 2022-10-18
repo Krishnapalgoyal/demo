@@ -2,7 +2,7 @@
   <h1>All Employee</h1>
     <ul>
       <% @department.employees.each do |employee| %>
-        <li> <%= link_to employee.name, leave_asign_assign_leafe_path(id: employee.id)%></li>
+       <li> <%= link_to employee.name, leave_asign_assign_leafe_path(id: employee.id)%></li>
       <% end -%>
     </ul>
 <div>

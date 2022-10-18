@@ -18,9 +18,9 @@ class Employee < ApplicationRecord
     end
   end 
 
-  def total_leaves
-    leaves.pluck(:total_day).compact
-  end
+  # def total_leaves
+  #   leaves.pluck(:total_day).compact
+  # end
 
 
     

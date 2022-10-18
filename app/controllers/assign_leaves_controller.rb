@@ -21,20 +21,16 @@ class AssignLeavesController < ApplicationController
     else
       @assign = AssignLeave.new(assign_params)
       @assign.save
+       redirect_to employees_path
     end
   end
 
-  def leave_status
 
-    @assign = AssignLeave.find(params[:id])
-    @assign.update(status:"approved")
-    redirect_to leaves_path
-  end
-  def rejected
-    @assign = AssignLeave.find(params[:id])
-    @assign.update(status:"rejected")
-    redirect_to leaves_path
-  end
+
+  
+
+
+
 
   private
     def assign_params
