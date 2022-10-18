@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
  get "/deleted_employee/" => "employees#deleted_employee", as: :deleted_employee
 
- get "/restore_employee/:id" => "employees#restore_employee", as: :restore_employee
+ put "/restore_employee/:id" => "employees#restore_employee", as: :restore_employee
  resources :sessions
  resources :employees do 
  resource :addresses
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get :all_employee, on: :member
  end
 
- get "/really_destroy/:id" => "employees#really_destroy",as: :really_destroy
+ delete "/really_destroy/:id" => "employees#really_destroy",as: :really_destroy
  post "/bulk_destroy/" =>"employees#bulk_destroy"
  delete "/bulk_delete/" =>"employees#bulk_delete"
 
