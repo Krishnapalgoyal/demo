@@ -8,11 +8,7 @@ module ApplicationHelper
   end
 
   def assignd_leave
-    if current_user.assign_leave
-      current_user.assign_leave.day
-    else
-      "you have no assign_leave"
-    end
+      current_user.assign_leave
   end
 
   # def remaining_leave
