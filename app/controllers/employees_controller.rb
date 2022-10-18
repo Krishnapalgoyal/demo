@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
  before_action :require_login
-
+skip_before_action :verify_authenticity_token
   def new 
     @employee = Employee.new
     @employee.addresses.new
@@ -74,6 +74,12 @@ class EmployeesController < ApplicationController
 
   def bulk_destroy
     Employee.with_deleted.where(id: params[:collection_ids]).destroy_all
+     redirect_to deleted_employee_path
+  end
+
+   def bulk_delete
+    binding.pry
+    Employee.where(id: params[:collection_ids]).destroy
      redirect_to deleted_employee_path
   end
 

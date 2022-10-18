@@ -1,6 +1,6 @@
 class LeavesController < ApplicationController
 before_action :require_login
- 
+
   def new
    @leave = Leave.new  
   end 
@@ -11,7 +11,7 @@ before_action :require_login
   def create
      @leave = Leave.new(leave_params)
     if @leave.save
-      redirect_to leaves_path
+      redirect_to employees_path
     else
        render new
     end
@@ -31,6 +31,6 @@ before_action :require_login
   
   private
    def leave_params
-      params.require(:leave).permit(:employee_id,:from_date, :to_date,:total_day)
+      params.require(:leave).permit(:employee_id,:from_date, :to_date )
     end
 end

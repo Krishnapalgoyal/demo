@@ -2,6 +2,7 @@ class Employee < ApplicationRecord
   belongs_to :department
   has_many :addresses
   has_many :leaves, class_name: "Leave", dependent: :destroy
+  has_one :assign_leave
   accepts_nested_attributes_for :addresses
    acts_as_paranoid
    has_one_attached :avatar
@@ -16,6 +17,10 @@ class Employee < ApplicationRecord
         all
     end
   end 
+
+  # def total_leaves
+  #   leaves.pluck(:total_day).compact
+  # end
 
 
     

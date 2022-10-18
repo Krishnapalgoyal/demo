@@ -5,12 +5,16 @@
     <table class="table"id="userTables">
       <tr>
         <th> Employee  name</th>
+        <th>Days</th>
         <th>status </th>
       </tr>
         <% @leaves.each do |leave| %>
         <tr>
           <td>
             <%= Employee.with_deleted.find(leave.employee_id).name %>
+          </td>
+          <td>
+            <%= leave.total_day %>
           </td>
           <td>
             <%= link_to "Approve", leave_status_path(leave.id), class:"btn btn-success"%>

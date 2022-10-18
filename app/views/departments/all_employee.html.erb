@@ -1,8 +1,9 @@
 <div class= "container">
   <h1>All Employee</h1>
     <ul>
-    <% @department.employees.each do |employee| %>
-    <li> <%=employee.name%></li>
-    </ul>
+      <% @department.employees.each do |employee| %>
+       <li> <%= employee.name%></li>
       <% end -%>
+    </ul>
 <div>
+       

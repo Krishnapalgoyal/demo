@@ -21,8 +21,10 @@ Rails.application.routes.draw do
  resources :sessions
  resources :employees do 
  resource :addresses
- 
  end
+  resources :assign_leaves do
+    get "/leave_assign"  => "assign_leaves#leave_assign", as: :leave_asign, on: :member
+  end
 
  resources :departments do
   get :all_employee, on: :member
@@ -30,4 +32,6 @@ Rails.application.routes.draw do
 
  get "/really_destroy/:id" => "employees#really_destroy",as: :really_destroy
  post "/bulk_destroy/" =>"employees#bulk_destroy"
+ delete "/bulk_delete/" =>"employees#bulk_delete"
+
 end
