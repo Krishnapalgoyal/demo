@@ -17,8 +17,7 @@ class SessionsController < ApplicationController
       if (params[:type] == "Admin")
         if(employee)
           session[:employee_id] = employee.id
-          LoginNotificationMailer.create_notification(employee).
-          deliver_now
+          LoginNotificationMailer.create_notification(employee).deliver_now
           redirect_to employees_path
           flash[:notice] = "You are a Admin."
            
