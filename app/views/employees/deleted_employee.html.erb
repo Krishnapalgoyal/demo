@@ -24,10 +24,10 @@
           <%= Department.find(employee.department_id).name%>
         </td>
         <td>
-          <%= link_to "restore", restore_employee_path(employee.id), class:"btn btn-success"%>
+          <%= link_to "restore", restore_employee_path(employee.id),method: :put , class:"btn btn-success"%>
         </td>
         <td>
-          <%= link_to "Delete ", really_destroy_path(employee.id), class:"btn btn-danger"%>
+          <%= link_to "Delete ", really_destroy_path(employee.id), method: :delete ,class:"btn btn-danger"%>
         </td>
       </tr>
       <%end%>
