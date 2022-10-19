@@ -2,7 +2,7 @@ class Employee < ApplicationRecord
   belongs_to :department
   has_many :addresses
   has_many :leaves, class_name: "Leave", dependent: :destroy
-  has_one :assign_leave
+  has_one :assign_leave , dependent: :destroy
   accepts_nested_attributes_for :addresses
    acts_as_paranoid
    has_one_attached :avatar
