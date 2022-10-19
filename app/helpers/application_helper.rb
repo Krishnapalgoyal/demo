@@ -24,8 +24,6 @@ module ApplicationHelper
   def total_leave
     approved_leave.pluck(:total_day).sum
   end
-
-end
   def is_admin?
     current_user.type == "Admin"
   end
