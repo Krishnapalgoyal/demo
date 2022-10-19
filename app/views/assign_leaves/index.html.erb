@@ -1,18 +1,18 @@
+<div class="container"> 
+  <table class= "table">
+    <tr>
+      <th>Employee name</th>
+      <th>Assigned leave</th>
+      <th>Year</th>
+    </tr>
+      <%@assign.each do |assign|%>
+        <tr>
+          <td><%=link_to assign.employee.name, leave_asign_assign_leafe_path(id: assign.employee.id)%></td>
+          <td><%=assign.day%></td>
+           <td><%=assign.year%></td>
+        </tr>
+      <%end%>
 
-    <%= form_with model: @assing do |form| %>
-      <div class="card">
-        <div class="card-body">
-        <%= form.hidden_field :employee_id, value: @emp.id%>
-        <div class="mb-3">
-        <%= form.label :day, { class: "form-label"} %><br>
-        <%= form.text_field :day, { class: "form-control"} %>
-        </div>
-
-        <div class="mb-3">
-        <%= form.label :year, { class: "form-label"}  %><br>
-        <%= form.text_area :year, { class: "form-control"}%>
-        </div>
-         <%= form.submit "Assign Leave", class: "btn btn-primary" %>
-         </div>
-      </div>
-    <% end %>
+  </table>
+</div>
+   
