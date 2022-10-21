@@ -1,5 +1,5 @@
 class LeavesController < ApplicationController
-before_action :require_login
+before_action :authenticate_employee!
 
   def new
    @leave = Leave.new  

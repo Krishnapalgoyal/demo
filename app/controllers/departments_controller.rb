@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
- before_action :require_login
+before_action :authenticate_employee!
  before_action :current_type
 
   def new
