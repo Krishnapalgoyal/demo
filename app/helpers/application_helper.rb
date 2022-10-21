@@ -1,14 +1,11 @@
 module ApplicationHelper
   def current_type
-    current_user.type == "Admin"
+    current_employee.type == "Admin"
   end
-  def current_user
-    @current_user ||= Employee.find(session[:employee_id]) if 
-    session[:employee_id]
-  end
+ 
 
   def assignd_leave
-      current_user.assign_leave
+      current_employee.assign_leave
   end
 
   # def remaining_leave
@@ -18,7 +15,7 @@ module ApplicationHelper
   # end
 
   def approved_leave 
-    current_user.leaves.approved
+    current_employee.leaves.approved
   end
 
   def total_leave

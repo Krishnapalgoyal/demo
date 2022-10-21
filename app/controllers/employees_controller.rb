@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
- before_action :require_login
+ before_action :authenticate_employee!
 skip_before_action :verify_authenticity_token
   def new 
     @employee = Employee.new
@@ -13,7 +13,7 @@ skip_before_action :verify_authenticity_token
 
      # @employee = Employee.all.paginate(:page => params[:page], :per_page=>1)
    else
-    @leaves = Leave.where(employee_id:current_user.id)
+    @leaves = Leave.where(employee_id:current_employee.id)
    end
   end
 

@@ -6,7 +6,7 @@
         <%=form.label :to_date%>
         <%=form.date_field :to_date, class:"form-control"%></br>
 
-        <%=form.hidden_field :employee_id, value: current_user.id %>
+        <%=form.hidden_field :employee_id, value: current_employee.id %>
         <%= submit_tag "Leave request", class:"btn btn-primary"%>           
         <% end %>
         <% flash.each do |name, msg| -%>
