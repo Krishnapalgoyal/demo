@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  devise_for :employees, controllers: {
+        sessions: 'employees/sessions'
+      }
+
  # root "home#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
  root "home#index"
@@ -18,7 +23,7 @@ Rails.application.routes.draw do
  get "/deleted_employee/" => "employees#deleted_employee", as: :deleted_employee
 
  get "/restore_employee/:id" => "employees#restore_employee", as: :restore_employee
- resources :sessions
+ # resources :sessions
  resources :employees do 
  resource :addresses
  end
