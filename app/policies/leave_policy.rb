@@ -8,9 +8,9 @@ class LeavePolicy < ApplicationPolicy
     
   # end
   # end
-  attr_reader :current_user, :department
-  def initialize(current_user, department)
-    @employee = current_user
+  attr_reader :current_employee, :department
+  def initialize(current_employee, department)
+    @employee = current_employee
    @department = department
   end
 
@@ -33,8 +33,8 @@ class LeavePolicy < ApplicationPolicy
   end
 
   class Scope < LeavePolicy
-    def initialize(current_user, scope)
-      @user = current_user
+    def initialize(current_employee, scope)
+      @user = current_employee
       @scope = scope
     end
 
@@ -48,6 +48,6 @@ class LeavePolicy < ApplicationPolicy
 
     private
 
-    attr_reader :current_user, :scope
+    attr_reader :current_employee, :scope
   end
 end

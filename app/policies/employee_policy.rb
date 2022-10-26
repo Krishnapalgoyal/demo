@@ -11,9 +11,9 @@ class EmployeePolicy < ApplicationPolicy
 
     
   # end
-attr_reader :current_user, :department
-  def initialize(current_user, department)
-    @employee = current_user
+attr_reader :current_employee, :department
+  def initialize(current_employee, department)
+    @employee = current_employee
    @department = department
   end
 

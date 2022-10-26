@@ -1,7 +1,7 @@
 module EmployeesHelper
 
   def search
-    current_user.type == "Admin"
+    current_employee.type == "Admin"
   end
   
 end

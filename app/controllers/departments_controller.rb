@@ -15,7 +15,7 @@ before_action :authenticate_employee!
   
   def index
     @departments = Department.all
-   authorize @departments
+   authorize @department
   end
     
   def create

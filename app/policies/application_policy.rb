@@ -3,8 +3,8 @@
 class ApplicationPolicy
   attr_reader :user, :record
 
-  def initialize(current_user, record)
-    @user = current_user
+  def initialize(current_employee, record)
+    @user = current_employee
     @record = record
   end
 
@@ -37,8 +37,8 @@ class ApplicationPolicy
   end
 
   class Scope
-    def initialize(current_user, scope)
-      @user = current_user
+    def initialize(current_employee, scope)
+      @user = current_employee
       @scope = scope
     end
 
