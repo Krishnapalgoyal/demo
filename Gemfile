@@ -70,3 +70,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pry', '~> 0.10.3'
 
 gem "pundit", "~> 2.2"
+
+group :production do
+  gem 'rails_12factor'
+end
