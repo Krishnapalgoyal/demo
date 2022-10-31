@@ -9,10 +9,13 @@
         <tr>
           <td><%=link_to assign.employee.name, leave_asign_assign_leafe_path(id: assign.employee.id)%></td>
           <td><%=assign.day%></td>
-           <td><%=assign.year%></td>
+          <td><%=assign.year%></td>
         </tr>
       <%end%>
-
+      <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+      <% end -%>
   </table>
+  <%= link_to "Back", :back %>
 </div>
    

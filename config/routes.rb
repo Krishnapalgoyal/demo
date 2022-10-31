@@ -22,8 +22,11 @@ Rails.application.routes.draw do
  get "/rejected/:id/" => "leaves#rejected", as: :rejected
 
  get "/deleted_employee/" => "employees#deleted_employee", as: :deleted_employee
+ get "/employee_request/" => "employees#employee_request", as: :employee_request
 
  get "/restore_employee/:id" => "employees#restore_employee", as: :restore_employee
+ get "/enroll_employee/:id/" => "employees#enroll_employee", as: :enroll_employee
+
  # resources :sessions
  resources :employees do 
  resource :addresses

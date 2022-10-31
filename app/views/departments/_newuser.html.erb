@@ -4,7 +4,7 @@
         </td>
       
         <td>
-         <%=   department.employees.count() %>
+         <%=   department.employees.where(status:true).count() %>
         </td>
      
         <td>

@@ -1,4 +1,5 @@
 class LeavesController < ApplicationController
+before_action :is_true_admin?,only: [:leave_status,:rejected]
 before_action :authenticate_employee!
 
   def new
@@ -6,14 +7,15 @@ before_action :authenticate_employee!
   end 
 
   def index
-    @leaves = Leave.where(status:"requested")
-
+    @requested_leave = Leave.requested
+    @leaves = Leave.where(employee_id:current_employee.id)
   end
   def create
+    debugger
      @leave = Leave.new(leave_params)
-     authorize @leave
+     # authorize @leave
     if @leave.save
-      redirect_to employees_path
+      redirect_to leaves_path
     else
        render new
     end
@@ -21,13 +23,13 @@ before_action :authenticate_employee!
 
   def leave_status
    @leave = Leave.find(params[:id])
-    authorize @leave
+    # authorize @leave
    @leave.update(status:"approved")
    redirect_to leaves_path
   end
   def rejected
    @leave = Leave.find(params[:id])
-    authorize @leave
+    # authorize @leave
    @leave.update(status:"rejected")
    redirect_to leaves_path
   end

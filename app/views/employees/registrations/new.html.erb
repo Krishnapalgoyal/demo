@@ -13,11 +13,6 @@
     <%= f.label :name%><br />
     <%= f.text_field :name ,class:"form-control" %>
   </div>
-   <div class="field">
-        <%= f.label :type %></br>
-        <%= f.text_field :type,class:"form-control"%>
-   </div>
-
   <div class="field">
     <%= f.label :department %></br>
     <%= f.collection_select :department_id, Department.order(:name), :id, :name, class:"form-select"%>
@@ -35,7 +30,8 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
   </div>
-
+    <%= f.hidden_field :type,value:"Employe",class:"form-control"%>
+     <%= f.hidden_field :status,value:"false",class:"form-control"%>
   <div class="actions">
     <%= f.submit "Sign up", class:"btn btn-primary"%>
   </div>

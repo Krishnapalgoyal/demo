@@ -1,131 +1,52 @@
 
- <% if current_type %>
- <div class ="container">
-  <div>
+  <div class ="container">
+    <div>
     <%= form_with(url: '/search', method: 'get', local: true) do |form|%>
-
-  <!--     <%= text_field_tag(:search) %> -->
-  <%= form.collection_select :search, Employee.all, :name, :name, class:"form-control" %></br>
+      <%= form.collection_select :search, Employee.all, :name, :name, class:"form-control" %></br>
       <%= submit_tag("Search")%>
-  <% end %>
-       <%= link_to "All", employees_path, class:'btn btn-success float-right'%>
-       <%= link_to "Deleted", deleted_employee_path, class:'btn btn-danger float-right'%>
-  
-    
-  </div>
-  <div>
+    <% end %>
+    <%= link_to "All", employees_path, class:'btn btn-success float-right'%>
+    <%= link_to "Deleted", deleted_employee_path, class:'btn btn-danger float-right'%>
+    </div>
+    <div>
       <h2>All Employee </h2>
-  </div>
- <!--  <button type="button" onclick="loadDoc()">Bulk delete</button> -->
-<p id="demo"></p>
-<div class = "container">
+    </div>
    
-   <div class="row"> 
-    <% @employee.each do |employee| %>
-    <div class="col-4 w-100 p-3">
-      <div class="unselect" name="collection_ids[]" id = "<%= employee.id %>" value="<%= employee.id %>" onclick="select(this)">
-        <%#$no= employee.id %>
-        <%#=$no%>
-      <div class = "card  m-4 shadow  bg-white rounded" >
-          <div class = "">
-              <%if employee.avatar.attached? %>
+    <div class = "container">
+      <div class="row"> 
+        <% @employee.each do |employee| %>
+        <div class="col-4 w-100 p-3">
+          <div class="unselect" name="collection_ids[]" id = "<%= employee.id %>" value="<%= employee.id %>" onclick="select(this)">
+            <div class = "card  m-4 shadow  bg-white rounded" >
+              <div class = "">
+                <%if employee.avatar.attached? %>
                 <img src="<%=(url_for(employee.avatar))%>" class="card-img-top  p-3 img-circle" width="304" height="304" alt="name">
                 <%else%>
-                 <%= image_tag("defalt.jpg", class:"card-img-top  p-3 img-circle",width:"304",height:"304",alt:"name")%>
-             <%end%>
-          </div>
-          <div class="card-header text-center">
-          <h4> <%=  employee.name%></h4>
-          </div>
-          <div class="crad-body text-center">
-             <%= Department.find(employee.department_id).name%>
-          </div>
-          <div class="text-center mt-2 p-0">
-              <%= link_to "see profile", employee_path(employee.id) ,class:"btn btn-success"%>
+                <%= image_tag("defalt.jpg", class:"card-img-top  p-3 img-circle",width:"304",height:"304",alt:"name")%>
+                <%end%>
+              </div>
+              <div class="card-header text-center">
+                <h4> <%=  employee.name%></h4>
+              </div>
+              <div class="crad-body text-center">
+                <%= Department.find(employee.department_id).name%>
+              </div>
+              <div class="text-center mt-2 p-0">
+                <%= link_to "see profile", employee_path(employee.id) ,class:"btn btn-success"%>
+              </div>
+            </div>
           </div>
         </div>
+        <%end%>
       </div>
-     </div>
-    <%end%>
-</div>
 
-</div>
-<div class="text-center">
- <%= will_paginate @employee,renderer: BootstrapPagination::Rails %>
-
-</div>
-
- <!-- <div class="table-responsive">
-  <table class="table"id="userTables">
-   <tr>
-      <th> Employee name</th>
-          <th>Designation</th>
-   </tr>
-      <div class = text-center>
-         <%= will_paginate @employee %>
-      </div>
-      <% @employee.each do |employee| %>
-      <tr>
-        <td>
-         <%= link_to employee.name, employee_path(employee.id) %>
-        </td>
-        <td>
-         <%= Department.find(employee.department_id).name%>
-        </td>
-      </tr>
-      <%end%>
-       
-  </table>
- </div>
- --></div>
- <% else %>
-     <%if assignd_leave%>
-      <p> You have total <%=assignd_leave.day%> leave for year <%=assignd_leave.year%></p>
-      <% else%>
-      <p> No assignd leave </p>
-      <% end%>
-   <p>Approved Leave <%=total_leave%></p>
-     
-       <%= link_to "leave", leaves_path, class:'btn btn-success float-right'%>
-       <div class="table-responsive">
-  <table class="table"id="userTables">
-   <tr>
-      <th> from date</th>
-      <th>To date</th>
-      <th>Days</th>
-      <th>status</th>
-   </tr>
-      <div class = text-center>
-        
-      </div>
-      <% @leaves.each do |leave| %>
-      <tr>
-        <td>
-         <%=  leave.from_date.to_date %>
-        </td>
-        <td>
-         <%=  leave.to_date.to_date %>
-        </td>
-        <td>
-         <%=  leave.total_day %>
-        </td>
-        <td>
-         <%=  leave.status %>
-        </td>
-      </tr>
-      <%end%>
-       
-  </table>
- </div>
-<%end%>
-
+    </div>
+    <div class="text-center">
+      <%= will_paginate @employee,renderer: BootstrapPagination::Rails %>
+    </div>
+    </div>
 <script>
- //  function select(that){
- // var colors = document.getElementsByClassName('unselect').value;
- // that.parentNode.style.backgroundColor = "blue"
- // that.classList = "select" 
- //   }
-  
+
 
     function select(that){
     var clicked = true
@@ -145,15 +66,7 @@
 }
 
 
-// function loadDoc() {
-//   const xhttp = new XMLHttpRequest();
-//   xhttp.onload = function() {
-//     document.getElementsByclass("select").innerHTML = this.responseText;
-//     var collection_ids = "collection_ids[]"
-//   }
-//   xhttp.open("post", "/bulk_delete/","collection_ids");
-//   xhttp.send();
-// }
+
   function storeVar() {
    
     var amount = document.getElementById('').getAttribute('value');

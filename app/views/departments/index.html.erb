@@ -20,13 +20,9 @@
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
-
-        <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">Modal Heading</h4>
-         <!--  <button type="button" class="close" data-bs-dismiss="modal" id="close_model">&times;</button> -->
         </div>
-
         <!-- Modal body -->
         <div class="modal-body" id ="model_body">
          
@@ -34,9 +30,9 @@
         </div>
 
         <!-- Modal footer -->
-       <!--  <div class="modal-footer">
+    <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="close"=>Close</button>
-        </div> -->
+        </div> 
 
       </div>
     </div>
@@ -45,33 +41,3 @@
 </div>
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <%= form_with url: departments_path do |form| %>
-  <div class="card">
-  <div class="card-body">
-
-          <div class="mb-3">
-          <%= form.label :name, { class: "form-label"} %><br>
-          <%= form.text_field :name, { class: "form-control"} %>
-        </div>
-
-          <div class="mb-3">
-          <%= form.label :jobroll, { class: "form-label"}  %><br>
-          <%= form.text_area :jobroll, { class: "form-control"}%>
-        </div>
-           <%= form.submit "Submit",method: :POST, class: "btn btn-primary" %>
-
-          </div>
-        </div>
-      <% end %>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>

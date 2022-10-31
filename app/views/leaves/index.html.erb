@@ -1,18 +1,63 @@
 <div class ="container">
-  <%if ! current_type%>
-    <%= render :partial => "leaveform" %>
+  <%if ! is_admin?%>
+     <%if assignd_leave%>
+        <p> You have total <%=assignd_leave.day%> leave for year <%=assignd_leave.year%></p>
+      <% else%>
+        <p> No assignd leave </p>
+      <% end%>
+      <p>Approved Leave <%=total_leave%></p>
+      <p>reaining Leave <%=remaning_leave%></p>
+      <%= link_to "leave", new_leafe_path, class:'btn btn-success float-right'%>
+      <div class="table-responsive">
+      <table class="table"id="userTables">
+      <tr>
+        <th> from date</th>
+        <th>To date</th>
+        <th>Days</th>
+        <th>status</th>
+      </tr>
+      <div class = text-center>
+
+      </div>
+      <% @leaves.each do |leave| %>
+        <tr>
+          <td>
+            <%=  leave.from_date.to_date %>
+          </td>
+          <td>
+            <%=  leave.to_date.to_date %>
+          </td>
+          <td>
+            <%=  leave.total_day %>
+          </td>
+          <td>
+            <%=  leave.status %>
+          </td>
+        </tr>
+      <%end%>
+
+    </table>
+  </div>
   <%else%>
    <%= link_to "Assigned leave", assign_leaves_path, class:"btn btn-success"%>
     <table class="table"id="userTables">
       <tr>
         <th> Employee  name</th>
+        <th>From</th>
+        <th>To</th>
         <th>Days</th>
         <th>status </th>
       </tr>
-        <% @leaves.each do |leave| %>
+        <% @requested_leave.each do |leave| %>
         <tr>
           <td>
             <%= Employee.with_deleted.find(leave.employee_id).name %>
+          </td>
+          <td>
+            <%=leave.from_date.to_date%>
+          </td>
+          <td>
+            <%=leave.to_date.to_date%>
           </td>
           <td>
             <%= leave.total_day %>

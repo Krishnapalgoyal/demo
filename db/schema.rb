@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2022_10_26_065510) do
     t.string "unconfirmed_email"
     t.string "provider", limit: 50, default: "", null: false
     t.string "uid", limit: 50, default: "", null: false
+    t.boolean "status"
     t.index ["deleted_at"], name: "index_employees_on_deleted_at"
     t.index ["department_id"], name: "index_employees_on_department_id"
   end

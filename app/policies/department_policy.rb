@@ -1,20 +1,14 @@
 class DepartmentPolicy < ApplicationPolicy 
-  # class Scope < Scope
-  #   # NOTE: Be explicit about which records you allow access to!
-  #   # def resolve
-  #   #   scope.all
-  #   # end
-
-    
-  # end
   attr_reader :current_employee, :department
+
   def initialize(current_employee, department)
     @employee = current_employee
    @department = department
   end
 
   def index?
-    @employee.type == "Admin"
+    binding.pry
+   @employee.type == "Admin"
   end
 
   def show?
@@ -57,7 +51,7 @@ class DepartmentPolicy < ApplicationPolicy
 
     private
 
-    attr_reader :user, :scope
+    attr_reader :current_employee, :scope
   end
 
 
