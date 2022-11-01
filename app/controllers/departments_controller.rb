@@ -11,12 +11,12 @@ class DepartmentsController < ApplicationController
 
   def index
     @departments = Department.all
-    # authorize @departments
+    authorize @department, policy_class: DepartmentPolicy
   end
 
   def create
     @department = Department.create(d_params)
-    # authorize @department
+    authorize @department, policy_class: DepartmentPolicy
     respond_to do |format|
       format.html {redirect_to new_department_path}
       format.js 
@@ -25,7 +25,7 @@ class DepartmentsController < ApplicationController
 
   def edit
     @department = Department.find(params[:id])
-    # authorize @department
+    authorize @department, policy_class: DepartmentPolicy
     respond_to do |format|
       format.html {redirect_to new_department_path}
       format.js 
@@ -34,7 +34,7 @@ class DepartmentsController < ApplicationController
 
   def update
     @department = Department.find(params[:id])
-    # authorize @department
+    authorize @department, policy_class: DepartmentPolicy
     if @department.update(d_params)
       respond_to do |format|
         format.html {redirect_to @department}
@@ -47,12 +47,12 @@ class DepartmentsController < ApplicationController
 
   def show
     @department = Department.find(params[:id])
-    # authorize @department
+    authorize @department, policy_class: DepartmentPolicy
   end
 
   def destroy
     @department = Department.find(params[:id])
-    # authorize @department
+    authorize @department, policy_class: DepartmentPolicy
     @department.destroy
     respond_to do |format|   
       format.html { redirect_to department_path }   
@@ -63,7 +63,6 @@ class DepartmentsController < ApplicationController
 
   def all_employee
     @department = Department.find(params[:id])
-    # authorize @department
     @employee = @department.employees.where(status:true)
   end 
 

@@ -1,21 +1,21 @@
-class DepartmentPolicy < ApplicationPolicy 
-  attr_reader :current_employee, :department
+class DepartmentPolicy < ApplicationPolicy
+  attr_reader :current_employee, :departments
 
-  def initialize(current_employee, department)
-    @employee = current_employee
-   @department = department
+  def initialize(current_employee, departments)
+    @user = current_employee
+    @record = departments
   end
 
-  def index
-   @employee.type == "Admin"
+  def index?
+    @user.type == "Admin"
   end
 
   def show?
-    @employee.type == "Admin"
+    @user.type == "Admin"
   end
 
   def create?
-    @employee.type == "Admin"
+    @user.type == "Admin"
   end
 
   def new?
@@ -23,7 +23,7 @@ class DepartmentPolicy < ApplicationPolicy
   end
 
   def update?
-   @employee.type == "Admin"
+    @user.type == "Admin"
   end
 
   def edit?
@@ -31,16 +31,12 @@ class DepartmentPolicy < ApplicationPolicy
   end
 
   def destroy?
-  @employee.type == "Admin"
-  end
-  
-  def all_employee?
-     @employee.type == "Admin"
+   @user.type == "Admin"
   end
 
   class Scope
-    def initialize(current_employee, scope)
-      @user = current_employee
+    def initialize(user, scope)
+      @user = user
       @scope = scope
     end
 
@@ -50,8 +46,6 @@ class DepartmentPolicy < ApplicationPolicy
 
     private
 
-    attr_reader :current_employee, :scope
+    attr_reader :user, :scope
   end
-
-
 end
