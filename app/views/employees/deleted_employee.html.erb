@@ -19,9 +19,7 @@
           <td>
             <%=  employee.name %>
           </td>
-          <td>
-            <%= Department.find(employee.department_id).name%>
-          </td>
+         
           <td>
             <%= link_to "restore", restore_employee_path(employee.id),method: :put , class:"btn btn-success"%>
           </td>

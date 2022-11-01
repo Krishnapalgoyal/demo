@@ -31,19 +31,19 @@ attr_reader :current_employee, :department
      @employee.type == "Admin"
   end
 
-  class Scope
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
+#   class Scope
+#     def initialize(user, scope)
+#       @user = user
+#       @scope = scope
+#     end
 
-    def resolve
-      raise NotImplementedError, "You must define #resolve in #{self.class}"
-    end
+#     def resolve
+#       raise NotImplementedError, "You must define #resolve in #{self.class}"
+#     end
 
-    private
+#     private
 
-    attr_reader :user, :scope
-  end
+#     attr_reader :, :scope
+#   end
 
-end
+# end

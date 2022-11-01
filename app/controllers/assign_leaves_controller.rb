@@ -28,9 +28,6 @@ class AssignLeavesController < ApplicationController
       redirect_to assign_leaves_path, alert: "Use proper year formate"
     end
   end
-
-
-
   private
     def assign_params
       params.require(:assign_leave).permit(:day,:year,:employee_id)

@@ -1,9 +1,7 @@
 class DepartmentsController < ApplicationController
   before_action :is_true_admin?
-  before_action :authenticate_employee!
- 
+  before_action :authenticate_employee! 
   def new
-    @departments = Department.all
     @department = Department.new
     respond_to do |format|
       format.html {redirect_to new_department_path}
@@ -19,7 +17,6 @@ class DepartmentsController < ApplicationController
   def create
     @department = Department.create(d_params)
     # authorize @department
-    @departments = Department.all
     respond_to do |format|
       format.html {redirect_to new_department_path}
       format.js 
