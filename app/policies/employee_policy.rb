@@ -1,16 +1,4 @@
 class EmployeePolicy < ApplicationPolicy
-
-  # def show
-  #    @user.type == "Admin"
-  # end
-  # class Scope < Scope
-  #   # NOTE: Be explicit about which records you allow access to!
-  #   # def resolve
-  #   #   scope.all
-  #   # end
-
-    
-  # end
 attr_reader :current_employee, :department
   def initialize(current_employee, department)
     @employee = current_employee

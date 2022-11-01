@@ -6,8 +6,7 @@ class DepartmentPolicy < ApplicationPolicy
    @department = department
   end
 
-  def index?
-    binding.pry
+  def index
    @employee.type == "Admin"
   end
 

@@ -10,14 +10,14 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def is_true_admin?
-    redirect_to root_path, notice: "You are not admin." unless is_admin?
+    redirect_to root_path, notice: "You are not admin." unless is_admin? 
   end
   def is_admin?
     current_employee.type == "Admin"
   end
 
   def true_employe?
-   current_employee.status == "true"
+   redirect_to root_path, notice: "You are not an authorized employee." unless current_employee.status 
   end
 
   def is_employee?
@@ -27,8 +27,10 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resorce)
     if is_admin?
       employees_path
-    else
+    elsif is_employee?
       leaves_path
+    else
+      root_path
     end
   end
 

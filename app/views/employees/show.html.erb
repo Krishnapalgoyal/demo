@@ -5,7 +5,7 @@
     </div>
     <div class="h-50">
       <%if @employee.avatar.attached? %>
-      <img src="<%=(url_for(@employee.avatar))%>" class="card-img-top" >
+        <img src="<%=(url_for(@employee.avatar))%>" class="card-img-top" >
       <%end%>
     </div>
     <div class="card-body">
@@ -15,16 +15,15 @@
       <h3><%= @employee.email%></h3>
       <h3><%= @employee.password%></h3>
       <h3> <%= Department.find(@employee.department_id).name%></h3>
-
       <% if is_admin? %>
-        <ul>
+      <ul>
         <%= link_to "Assign Leave", leave_asign_assign_leafe_path(id: @employee.id),class:"btn btn-warning"%>
         <%= link_to "Edit",  edit_employee_path(@employee.id), class:"btn btn-primary"%>
         <%=link_to 'delete', employee_path(employee_id = @employee.id), method: :delete, class:"btn btn-danger" %>
-        </ul>
+      </ul>
         <%else%>
         <%= link_to "Edit profile",   edit_employee_registration_path(@employee.id), class:"btn btn-primary"%>
-      <% end %> 
+        <% end %> 
 
     </div>
   </div>

@@ -2,11 +2,13 @@
   <table class ="table">
     <tr>
       <th>Name</th>
+      <th>Department</th>
       <th>status</th>
     </tr>
     <% @employees.each do |employee| %>
     <tr>
       <td><%=employee.name%></td>
+      <td><%=employee.department.name%></td>
       <td><%= link_to "Approve", enroll_employee_path(employee.id), class:"btn btn-success"%></td>
       <td><%= link_to "Reject ", really_destroy_path(employee.id), method: :delete ,class:"btn btn-danger"%></td>
     </tr>

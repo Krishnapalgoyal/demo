@@ -2,7 +2,6 @@ class DepartmentsController < ApplicationController
   before_action :is_true_admin?
   before_action :authenticate_employee!
  
-
   def new
     @departments = Department.all
     @department = Department.new
@@ -40,13 +39,13 @@ class DepartmentsController < ApplicationController
     @department = Department.find(params[:id])
     # authorize @department
     if @department.update(d_params)
-    respond_to do |format|
-      format.html {redirect_to @department}
-      format.js 
+      respond_to do |format|
+        format.html {redirect_to @department}
+        format.js 
+      end
+    else
+      render :edit
     end
-  else
-    render :edit
-  end
   end
 
   def show

@@ -1,16 +1,12 @@
 <h3><%=@employee.name%></h3>
 <%= form_with url: @path, model: @employee do |form| %>
   <div class="mb-3">
-    <%= form.label :type %>
-    <%= form.text_field :type, class:"form-control"%>
+    <%= form.label :Roll %>
+    <%= form.select :type, ['Admin', 'Employe']%>
   </div>
   <div class="mb-3">
     <%= form.label :department %>
     <%= form.collection_select :department_id, Department.order(:name), :id, :name, class:"form-select"%></br>
-  </div>
-   <div class="mb-3">
-    <%= form.label :status %>
-    <%= form.text_field :status, class:"form-control"%></br>
   </div>
 <%= form.submit class:"btn btn-primary"%>
 <%end%>

@@ -1,5 +1,6 @@
 class LeavesController < ApplicationController
 before_action :is_true_admin?,only: [:leave_status,:rejected]
+before_action :true_employe? ,only: [:new, :create]
 before_action :authenticate_employee!
 
   def new
@@ -11,7 +12,6 @@ before_action :authenticate_employee!
     @leaves = Leave.where(employee_id:current_employee.id)
   end
   def create
-    debugger
      @leave = Leave.new(leave_params)
      # authorize @leave
     if @leave.save
