@@ -1,6 +1,14 @@
 class AssignLeavesController < ApplicationController
   before_action :is_true_admin?,only: [:create,:edit,:update,:leave_assign]
   before_action :authenticate_employee!
+  before_action :present,except: [:new,:create,:index]
+
+  def present
+    @employee = Employee.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    flash[:notice] = "this employee is not present"
+    redirect_to root_path
+  end
   def new
     @assign = AssignLeave.new  
   end 

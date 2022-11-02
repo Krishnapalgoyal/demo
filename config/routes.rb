@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
  # post '/request'=>"employees#leave_request"
  # get '/leave'  =>"employees#leave_index"
- resources :leaves
+ resources :leaves, only: [:new, :index, :create]
  get "/leave_status/:id/" => "leaves#leave_status", as: :leave_status
  get "/rejected/:id/" => "leaves#rejected", as: :rejected
 
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
  resources :employees do 
  resource :addresses
  end
-  resources :assign_leaves do
+  resources :assign_leaves, only: [:new, :index, :create]do
     get "/leave_assign"  => "assign_leaves#leave_assign", as: :leave_asign, on: :member
   end
 
@@ -42,5 +42,5 @@ Rails.application.routes.draw do
  delete "/really_destroy/:id" => "employees#really_destroy",as: :really_destroy
  post "/bulk_destroy/" =>"employees#bulk_destroy"
  delete "/bulk_delete/" =>"employees#bulk_delete"
- get "*path" => redirect("/404.html")
+ get "*path" => redirect("/404")
 end

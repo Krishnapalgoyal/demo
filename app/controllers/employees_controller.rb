@@ -2,7 +2,14 @@ class EmployeesController < ApplicationController
   before_action :is_true_admin?,except: [:show]
   before_action :authenticate_employee!
   skip_before_action :verify_authenticity_token
+  before_action :present,only: [:edit, :show ,:update, :destroy,:enroll_employee]
 
+  def present
+    @employee = Employee.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    flash[:notice] = "this employee is not present"
+    redirect_to root_path
+  end
   def new 
     @employee = Employee.new
     @employee.addresses.new

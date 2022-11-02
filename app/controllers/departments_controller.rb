@@ -1,6 +1,13 @@
 class DepartmentsController < ApplicationController
   before_action :is_true_admin?
   before_action :authenticate_employee! 
+  before_action :present,except: [:new,:create,:index]
+   def present
+    @department = Department.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    flash[:notice] = "this department is not present"
+    redirect_to root_path
+  end
   def new
     @department = Department.new
     respond_to do |format|
