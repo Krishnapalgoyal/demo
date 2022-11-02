@@ -42,5 +42,5 @@ Rails.application.routes.draw do
  delete "/really_destroy/:id" => "employees#really_destroy",as: :really_destroy
  post "/bulk_destroy/" =>"employees#bulk_destroy"
  delete "/bulk_delete/" =>"employees#bulk_delete"
-
+ get "*path" => redirect("/404.html")
 end

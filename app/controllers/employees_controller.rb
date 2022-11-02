@@ -1,6 +1,8 @@
 class EmployeesController < ApplicationController
+  before_action :is_true_admin?,except: [:show]
   before_action :authenticate_employee!
   skip_before_action :verify_authenticity_token
+
   def new 
     @employee = Employee.new
     @employee.addresses.new
@@ -12,7 +14,13 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    @employee = Employee.find(params[:id])
+    if is_admin?
+      @employee = Employee.find(params[:id])
+    elsif params[:id].to_i == current_employee.id
+      @employee = current_employee
+    else
+      redirect_to root_path, notice: "You are not an athorize user."
+    end
   end
 
   def create
@@ -87,7 +95,6 @@ class EmployeesController < ApplicationController
   end
 
   private
-
   def employee_params
     params.require(get_access.to_sym).permit(:name, :contact ,:email ,:type, :search, :password,:department_id,:collection_ids, :avatar,:status,addresses_attributes: [:id, :c_address, :p_address])
   end
@@ -99,6 +106,7 @@ class EmployeesController < ApplicationController
       params[:admin].present? ? "admin" : "employe"
     end 
   end
+
 end
 
 

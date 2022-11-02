@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  helper_method :logged_in?
   helper_method :true_employe?
   helper_method :is_admin?
   helper_method :is_employee?
@@ -36,6 +35,8 @@ class ApplicationController < ActionController::Base
   def pundit_user
     current_employee
   end
+
+
   protected
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
@@ -45,9 +46,13 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :contact, :type, :email,:department_id, :search,:collection_ids, :avatar,:password,:status, addresses_attributes: [:id, :c_address, :p_address])}
 
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :contact, :type, :email,:department_id, :search,:collection_ids, :avatar,:password,:status, addresses_attributes: [:id, :c_address, :p_address])}
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :contact, :type, :email,:department_id, :search,:collection_ids, :avatar,:password,:password_confirmation,:status,:current_password, addresses_attributes: [:id, :c_address, :p_address])}
   end
-  end
+    def after_update_path_for(resorce)
+      binding.pry
+      employee_path
+    end
+end
 
 
 
