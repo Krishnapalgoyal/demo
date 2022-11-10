@@ -33,16 +33,11 @@ end
 
 
 
-# RSpec.describe EmployeesController, type: :model do
-
-#   describe "validations" do 
-#     it 'is database authenticable' do
-#       employee = Employee.create(
-#         email: 'test@example.com', 
-#         password: 'password123',
-#         password_confirmation: 'password123'
-#       )
-#       expect(employee.valid_password?('password123')).to be_truthy
-#     end
-#   end
-# end
+RSpec.describe EmployeesController, type: :model do
+  context "when creating a employee" do
+     let(:employee){build :employee}
+     it "shoud be valid employee with all attribute" do
+        employee.valid? == true
+     end
+  end
+end
