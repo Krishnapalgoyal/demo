@@ -1,5 +1,26 @@
 {
+  "name": "project_kp",
+  "private": true,
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "^5.4.3",
+    "bundel": "^0.0.0",
+    "jquery": "^3.6.1",
+    "jquery-validation": "^1.19.5",
+    "select2": "^4.1.0-rc.0",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^4.11.1"
+  },
+  "engines": {
+    "node": "12.16.2",
+    "npm": "6.x"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
 }

@@ -9,7 +9,7 @@
 
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password",class:"form-control"%>
+    <%= f.password_field :password, autocomplete: "current-password",class:"form-control",name:"password"%>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -26,3 +26,4 @@
 
 <%= render "employees/shared/links" %>
 </div>
+<%= javascript_pack_tag 'example.js' %>
