@@ -9,16 +9,22 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require('jquery')
+require('sweetalert2')
 import $ from 'jquery'
 import 'select2/dist/css/select2.css'
 import 'select2'
 import "jquery-validation"
+import "sweetalert2"
+import Swal from 'sweetalert2';
+window.Swal = Swal;
 //= require_self
 //= require bootstrap
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require sweetalert2
+//= require sweet-alert2-rails
 //=require jquery.validate
 //=require jquery.validate.additional-methods
 //= require_tree jquery.validate.localization

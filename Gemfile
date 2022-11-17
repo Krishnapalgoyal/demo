@@ -44,7 +44,8 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'jquery-rails', '~> 4.4'
 gem 'jquery-validation-rails', '~> 1.13', '>= 1.13.1'
-
+gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
+gem 'sweet-alert2-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
